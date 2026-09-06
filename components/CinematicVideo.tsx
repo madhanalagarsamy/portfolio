@@ -9,7 +9,6 @@ export default function CinematicVideo() {
   const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
   const [hasError, setHasError] = useState(false);
 
-  // Initialize both videos for strict mobile & desktop compatibility
   useEffect(() => {
     const v1 = video1Ref.current;
     const v2 = video2Ref.current;
@@ -48,7 +47,6 @@ export default function CinematicVideo() {
     }
   }, []);
 
-  // When Video 1 ends, smoothly transition to Video 2 (reverse frames)
   const handleVideo1Ended = () => {
     const v2 = video2Ref.current;
     if (v2) {
@@ -64,7 +62,6 @@ export default function CinematicVideo() {
     }
   };
 
-  // When Video 2 ends, smoothly transition back to Video 1 (forward frames)
   const handleVideo2Ended = () => {
     const v1 = video1Ref.current;
     if (v1) {
@@ -117,9 +114,9 @@ export default function CinematicVideo() {
         <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 via-black to-neutral-950 z-10" />
       )}
 
-      {/* Ultra-Light Transparent Overlay System */}
-      <div className="absolute inset-0 bg-black/10 backdrop-brightness-95 pointer-events-none z-20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none z-20" />
+      {/* Ultra-Light Minimal Transparent Overlays - Maximum Crisp Video Clarity */}
+      <div className="absolute inset-0 bg-black/5 pointer-events-none z-20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10 pointer-events-none z-20" />
     </div>
   );
 }

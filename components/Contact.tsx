@@ -53,7 +53,7 @@ export default function Contact() {
           className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
         >
           {/* Email Card */}
-          <div className="bg-black/20 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm hover:bg-black/30 hover:border-white/20 transition-all duration-300 flex flex-col justify-between group">
+          <div className="bg-black/10 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xs hover:bg-black/20 hover:border-white/20 transition-all duration-300 flex flex-col justify-between group">
             <div>
               <div className="flex items-center justify-between mb-6">
                 <span className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white">
@@ -83,7 +83,7 @@ export default function Contact() {
           </div>
 
           {/* Phone Card */}
-          <div className="bg-black/20 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm hover:bg-black/30 hover:border-white/20 transition-all duration-300 flex flex-col justify-between group">
+          <div className="bg-black/10 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xs hover:bg-black/20 hover:border-white/20 transition-all duration-300 flex flex-col justify-between group">
             <div>
               <div className="flex items-center justify-between mb-6">
                 <span className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white">
@@ -113,7 +113,7 @@ export default function Contact() {
           </div>
 
           {/* GitHub Card */}
-          <div className="bg-black/20 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm hover:bg-black/30 hover:border-white/20 transition-all duration-300 flex flex-col justify-between group">
+          <div className="bg-black/10 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xs hover:bg-black/20 hover:border-white/20 transition-all duration-300 flex flex-col justify-between group">
             <div>
               <div className="flex items-center justify-between mb-6">
                 <span className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white">

@@ -47,7 +47,7 @@ export default function Experience() {
                 <span className="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-neutral-900 border-2 border-white/60 group-hover:border-white group-hover:scale-125 transition-all duration-300" />
 
                 {/* Glass Experience Card */}
-                <div className="bg-black/20 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm hover:bg-black/30 hover:border-white/20 transition-all duration-500">
+                <div className="bg-black/10 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xs hover:bg-black/20 hover:border-white/20 transition-all duration-500">
                   <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
                     <span className="inline-flex items-center space-x-2 text-xs font-mono text-neutral-400 bg-white/[0.05] px-3 py-1 rounded-md border border-white/10">
                       <Icon size={14} className="text-white/80" />

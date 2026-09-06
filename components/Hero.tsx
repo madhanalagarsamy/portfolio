@@ -28,8 +28,8 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-start pt-24 pb-16 px-6 md:px-12 lg:px-20 z-10 select-none overflow-hidden">
-      {/* Localized subtle left gradient layer - keeps typography readable without hiding the subject on the right */}
-      <div className="absolute inset-y-0 left-0 w-full lg:w-2/3 bg-gradient-to-r from-black/60 via-black/35 to-transparent pointer-events-none z-0" />
+      {/* Localized ultra-light left gradient layer - keeps typography readable without hiding the subject */}
+      <div className="absolute inset-y-0 left-0 w-full lg:w-2/3 bg-gradient-to-r from-black/30 via-black/10 to-transparent pointer-events-none z-0" />
 
       <motion.div
         variants={containerVariants}

@@ -44,7 +44,7 @@ export default function SecurityResearch() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.7, delay: idx * 0.12 }}
-                className="bg-black/20 border border-white/10 rounded-2xl p-8 backdrop-blur-sm hover:bg-black/30 hover:border-white/20 transition-all duration-500 flex flex-col justify-between group"
+                className="bg-black/10 border border-white/10 rounded-2xl p-8 backdrop-blur-xs hover:bg-black/20 hover:border-white/20 transition-all duration-500 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">

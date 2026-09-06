@@ -41,7 +41,7 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="bg-black/20 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm hover:bg-black/30 hover:border-white/20 transition-all duration-300"
+                className="bg-black/10 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xs hover:bg-black/20 hover:border-white/20 transition-all duration-300"
               >
                 <div className="flex items-center space-x-3 mb-6 pb-4 border-b border-white/10">
                   <span className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/10 flex items-center justify-center text-white">

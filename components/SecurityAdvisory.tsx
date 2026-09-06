@@ -34,7 +34,7 @@ export default function SecurityAdvisory() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: "easeOut" as const }}
-          className="bg-black/20 border border-white/10 rounded-2xl p-8 md:p-12 backdrop-blur-sm relative overflow-hidden mb-16"
+          className="bg-black/10 border border-white/10 rounded-2xl p-8 md:p-12 backdrop-blur-xs relative overflow-hidden mb-16"
         >
           {/* Subtle Accent Glow */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />

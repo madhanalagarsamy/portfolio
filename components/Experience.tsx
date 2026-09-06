@@ -15,7 +15,7 @@ export default function Experience() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
           transition={{ duration: 0.7 }}
           className="mb-16"
         >
@@ -39,7 +39,7 @@ export default function Experience() {
                 key={item.id}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
+                viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
                 transition={{ duration: 0.7, delay: index * 0.15 }}
                 className="relative group"
               >

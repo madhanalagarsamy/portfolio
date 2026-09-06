@@ -15,7 +15,7 @@ export default function SecurityAdvisory() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
           transition={{ duration: 0.7 }}
           className="mb-16"
         >
@@ -32,7 +32,7 @@ export default function SecurityAdvisory() {
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
           transition={{ duration: 0.8, ease: "easeOut" as const }}
           className="bg-black/10 border border-white/10 rounded-2xl p-8 md:p-12 backdrop-blur-xs relative overflow-hidden mb-16"
         >
@@ -87,7 +87,7 @@ export default function SecurityAdvisory() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
           transition={{ duration: 0.7 }}
         >
           <h4 className="text-xs font-mono tracking-widest text-neutral-400 uppercase mb-8 text-center md:text-left">

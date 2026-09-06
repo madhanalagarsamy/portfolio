@@ -46,7 +46,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
           transition={{ duration: 0.7 }}
           className="mb-16"
         >
@@ -65,7 +65,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
             transition={{ duration: 0.7, delay: 0.1 }}
             className="lg:col-span-7 bg-black/10 border border-white/10 rounded-2xl p-8 md:p-10 backdrop-blur-xs"
           >
@@ -91,7 +91,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="lg:col-span-5 space-y-4"
           >
@@ -128,7 +128,7 @@ export default function About() {
                 key={step.num}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 className="bg-black/10 border border-white/10 rounded-xl p-6 backdrop-blur-xs hover:bg-black/20 hover:border-white/20 transition-all duration-300 group"
               >

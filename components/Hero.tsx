@@ -34,7 +34,8 @@ export default function Hero() {
       <motion.div
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
         className="relative z-10 max-w-xl lg:max-w-2xl w-full flex flex-col justify-center items-start text-left mr-auto"
       >
         {/* Category Pill */}

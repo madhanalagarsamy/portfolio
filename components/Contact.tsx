@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { profileData } from "@/data/profile";
-import { Mail, Phone, Copy, Check, ArrowUpRight } from "lucide-react";
+import { Mail, Copy, Check, ArrowUpRight } from "lucide-react";
 import GithubIcon from "@/components/icons/GithubIcon";
 
 export default function Contact() {
@@ -44,13 +44,13 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        {/* Contact Links Grid */}
+        {/* Contact Links Grid - Clean 2-Column Privacy Layout */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
         >
           {/* Email Card */}
           <div className="bg-black/10 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xs hover:bg-black/20 hover:border-white/20 transition-all duration-300 flex flex-col justify-between group">
@@ -71,43 +71,13 @@ export default function Contact() {
               <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-2">EMAIL ADDRESS</span>
               <a
                 href={`mailto:${profileData.email}`}
-                className="text-base md:text-lg font-mono font-semibold text-white hover:underline break-all"
+                className="text-lg md:text-xl font-mono font-semibold text-white hover:underline break-all"
               >
                 {profileData.email}
               </a>
             </div>
             <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-neutral-400">
-              <span>SEND INQUIRY</span>
-              <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </div>
-          </div>
-
-          {/* Phone Card */}
-          <div className="bg-black/10 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xs hover:bg-black/20 hover:border-white/20 transition-all duration-300 flex flex-col justify-between group">
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <span className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white">
-                  <Phone size={18} />
-                </span>
-                <button
-                  type="button"
-                  onClick={() => copyToClipboard(profileData.phone, "phone")}
-                  className="text-xs font-mono text-neutral-400 hover:text-white p-1.5 rounded bg-white/5 border border-white/10 transition-colors"
-                  aria-label="Copy Phone Number"
-                >
-                  {copied === "phone" ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
-                </button>
-              </div>
-              <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-2">DIRECT PHONE</span>
-              <a
-                href={`tel:${profileData.phone}`}
-                className="text-base md:text-lg font-mono font-semibold text-white hover:underline"
-              >
-                +91 {profileData.phone}
-              </a>
-            </div>
-            <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-neutral-400">
-              <span>CALL DIRECT</span>
+              <span>SEND DIRECT INQUIRY</span>
               <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
           </div>
@@ -129,18 +99,18 @@ export default function Contact() {
                   <ArrowUpRight size={14} />
                 </a>
               </div>
-              <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-2">GITHUB REPOSITORIES</span>
+              <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-2">GITHUB PROFILE & CODE</span>
               <a
                 href={profileData.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-base md:text-lg font-mono font-semibold text-white hover:underline break-all"
+                className="text-lg md:text-xl font-mono font-semibold text-white hover:underline break-all"
               >
                 {profileData.githubDisplay}
               </a>
             </div>
             <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-neutral-400">
-              <span>OPEN SOURCE & CODE</span>
+              <span>EXPLORE REPOSITORIES</span>
               <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
           </div>

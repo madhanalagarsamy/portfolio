@@ -11,7 +11,6 @@ export const profileData = {
   founderOf: "Net Corporation",
   location: "Hosur, Tamil Nadu, India",
   email: "amadhan882@gmail.com",
-  phone: "8807112135",
   github: "https://github.com/madhanalagarsamy",
   githubDisplay: "github.com/madhanalagarsamy",
   githubUsername: "madhanalagarsamy",

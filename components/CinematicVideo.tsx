@@ -25,7 +25,6 @@ export default function CinematicVideo() {
       if (playPromise !== undefined) {
         playPromise.catch((err) => {
           console.warn("Mobile autoplay policy waiting for user gesture:", err);
-          // Play immediately on first touch, scroll, or tap anywhere on mobile
           const handleMobileGesture = () => {
             vid.play().catch(() => {});
             window.removeEventListener("touchstart", handleMobileGesture);
@@ -57,7 +56,6 @@ export default function CinematicVideo() {
       v2.play().then(() => {
         setActiveVideo(2);
       }).catch(() => {
-        // Fallback: restart video 1 if v2 play fails
         if (video1Ref.current) {
           video1Ref.current.currentTime = 0;
           video1Ref.current.play().catch(() => {});
@@ -90,7 +88,7 @@ export default function CinematicVideo() {
           preload="auto"
           onEnded={handleVideo1Ended}
           onError={() => setHasError(true)}
-          className={`absolute inset-0 w-full h-full min-w-full min-h-full object-cover object-[65%_center] sm:object-[70%_25%] md:object-[75%_center] transition-opacity duration-700 ${
+          className={`absolute inset-0 w-full h-full min-w-full min-h-full object-cover object-[50%_20%] md:object-[75%_center] transition-opacity duration-700 ${
             activeVideo === 1 ? "opacity-100 z-10" : "opacity-0 z-0"
           }`}
           style={{ transform: "translateZ(0)" }}
@@ -107,7 +105,7 @@ export default function CinematicVideo() {
           preload="auto"
           onEnded={handleVideo2Ended}
           onError={() => setHasError(true)}
-          className={`absolute inset-0 w-full h-full min-w-full min-h-full object-cover object-[65%_center] sm:object-[70%_25%] md:object-[75%_center] transition-opacity duration-700 ${
+          className={`absolute inset-0 w-full h-full min-w-full min-h-full object-cover object-[50%_20%] md:object-[75%_center] transition-opacity duration-700 ${
             activeVideo === 2 ? "opacity-100 z-10" : "opacity-0 z-0"
           }`}
           style={{ transform: "translateZ(0)" }}

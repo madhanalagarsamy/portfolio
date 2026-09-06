@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { advisoryData } from "@/data/advisory";
-import { ExternalLink, ShieldCheck, FileCode, CheckCircle2 } from "lucide-react";
+import { ExternalLink, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 export default function SecurityAdvisory() {
   return (
@@ -48,18 +48,21 @@ export default function SecurityAdvisory() {
             </div>
 
             <span className="text-xs font-mono text-neutral-400">
-              PLATFORM: {advisoryData.platform}
+              TARGET REPO: <span className="text-white">{advisoryData.targetRepo}</span>
             </span>
           </div>
 
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-10">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-8">
             <div>
               <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-2">
-                ADVISORY IDENTIFIER
+                ADVISORY IDENTIFIER & RESEARCH SCOPE
               </span>
-              <h3 className="text-3xl md:text-5xl font-mono font-extrabold text-white tracking-wider">
+              <h3 className="text-3xl md:text-5xl font-mono font-extrabold text-white tracking-wider mb-3">
                 {advisoryData.id}
               </h3>
+              <p className="text-base md:text-lg text-neutral-200 font-medium font-mono">
+                {advisoryData.title}
+              </p>
             </div>
 
             <a
@@ -68,14 +71,14 @@ export default function SecurityAdvisory() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center space-x-2.5 px-6 py-3.5 rounded-full bg-white text-black font-mono text-xs tracking-widest uppercase font-semibold hover:bg-neutral-200 transition-all duration-300 shrink-0 shadow-lg shadow-white/5"
             >
-              <span>VIEW ON GITHUB ADVISORIES</span>
+              <span>VIEW ADVISORY ON GITHUB</span>
               <ExternalLink size={14} />
             </a>
           </div>
 
-          <div className="text-neutral-300 font-light text-sm md:text-base leading-relaxed max-w-3xl">
+          <div className="text-neutral-300 font-light text-sm md:text-base leading-relaxed max-w-3xl pt-4 border-t border-white/10">
             <p>
-              Formal security advisory documentation published on GitHub Security Advisory Database. Representing verified vulnerability research, responsible disclosure practices, and defensive security contributions.
+              Official security advisory documentation published on GitHub Security Advisory Database for <span className="text-white font-medium">{advisoryData.targetRepo}</span>. Representing verified vulnerability research, responsible disclosure practices, and defensive security contributions.
             </p>
           </div>
         </motion.div>
@@ -92,7 +95,7 @@ export default function SecurityAdvisory() {
           </h4>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {advisoryData.process.map((item, idx) => (
+            {advisoryData.process.map((item) => (
               <div
                 key={item.step}
                 className="bg-white/[0.02] border border-white/10 rounded-xl p-6 backdrop-blur-md hover:bg-white/[0.04] transition-colors"

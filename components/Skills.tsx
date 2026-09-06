@@ -17,7 +17,7 @@ export default function Skills() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
           className="mb-16"
         >
@@ -39,9 +39,9 @@ export default function Skills() {
                 key={category.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+                viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="bg-black/10 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xs hover:bg-black/20 hover:border-white/20 transition-all duration-300"
+                className="bg-black/10 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xs hover:bg-black/30 hover:border-white/30 hover:shadow-[0_0_25px_rgba(255,255,255,0.07)] hover:-translate-y-0.5 transition-all duration-300"
               >
                 <div className="flex items-center space-x-3 mb-6 pb-4 border-b border-white/10">
                   <span className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/10 flex items-center justify-center text-white">
@@ -56,7 +56,7 @@ export default function Skills() {
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3.5 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-mono text-neutral-200 hover:text-white hover:bg-white/10 hover:border-white/25 transition-all duration-200 cursor-default"
+                      className="px-3.5 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-mono text-neutral-200 hover:text-white hover:bg-white/15 hover:border-white/40 hover:scale-105 transition-all duration-200 cursor-default"
                     >
                       {skill}
                     </span>

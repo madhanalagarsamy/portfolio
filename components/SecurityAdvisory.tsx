@@ -15,7 +15,7 @@ export default function SecurityAdvisory() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
           className="mb-16"
         >
@@ -32,9 +32,9 @@ export default function SecurityAdvisory() {
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: "easeOut" as const }}
-          className="bg-black/10 border border-white/10 rounded-2xl p-8 md:p-12 backdrop-blur-xs relative overflow-hidden mb-16"
+          className="bg-black/10 border border-white/10 rounded-2xl p-8 md:p-12 backdrop-blur-xs relative overflow-hidden mb-16 hover:border-emerald-500/40 hover:shadow-[0_0_40px_rgba(16,185,129,0.12)] transition-all duration-500"
         >
           {/* Subtle Accent Glow */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />
@@ -87,7 +87,7 @@ export default function SecurityAdvisory() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
         >
           <h4 className="text-xs font-mono tracking-widest text-neutral-400 uppercase mb-8 text-center md:text-left">

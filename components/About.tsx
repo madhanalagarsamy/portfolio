@@ -46,7 +46,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
           className="mb-16"
         >
@@ -65,9 +65,9 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+            viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="lg:col-span-7 bg-black/10 border border-white/10 rounded-2xl p-8 md:p-10 backdrop-blur-xs"
+            className="lg:col-span-7 bg-black/10 border border-white/10 rounded-2xl p-8 md:p-10 backdrop-blur-xs hover:border-white/25 hover:bg-black/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.06)] transition-all duration-500"
           >
             <h3 className="text-xl md:text-2xl font-bold text-white mb-6 leading-snug">
               Bridging Secure Research, Enterprise Engineering & Organizational Building
@@ -91,7 +91,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+            viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="lg:col-span-5 space-y-4"
           >
@@ -128,9 +128,9 @@ export default function About() {
                 key={step.num}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+                viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="bg-black/10 border border-white/10 rounded-xl p-6 backdrop-blur-xs hover:bg-black/20 hover:border-white/20 transition-all duration-300 group"
+                className="bg-black/10 border border-white/10 rounded-xl p-6 backdrop-blur-xs hover:bg-black/30 hover:border-white/30 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(255,255,255,0.08)] transition-all duration-300 group"
               >
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-xs font-mono text-neutral-500 font-bold">{step.num}</span>

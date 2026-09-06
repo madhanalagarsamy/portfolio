@@ -15,7 +15,7 @@ export default function Experience() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
           className="mb-16"
         >
@@ -39,15 +39,15 @@ export default function Experience() {
                 key={item.id}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+                viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.7, delay: index * 0.15 }}
                 className="relative group"
               >
                 {/* Timeline Dot */}
-                <span className="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-neutral-900 border-2 border-white/60 group-hover:border-white group-hover:scale-125 transition-all duration-300" />
+                <span className="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-neutral-900 border-2 border-white/60 group-hover:border-white group-hover:scale-125 group-hover:shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all duration-300" />
 
                 {/* Glass Experience Card */}
-                <div className="bg-black/10 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xs hover:bg-black/20 hover:border-white/20 transition-all duration-500">
+                <div className="bg-black/10 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xs hover:bg-black/30 hover:border-white/30 hover:shadow-[0_0_25px_rgba(255,255,255,0.07)] hover:-translate-y-0.5 transition-all duration-500">
                   <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
                     <span className="inline-flex items-center space-x-2 text-xs font-mono text-neutral-400 bg-white/[0.05] px-3 py-1 rounded-md border border-white/10">
                       <Icon size={14} className="text-white/80" />

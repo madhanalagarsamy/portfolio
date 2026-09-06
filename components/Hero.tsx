@@ -34,8 +34,7 @@ export default function Hero() {
       <motion.div
         variants={containerVariants}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.2 }}
+        animate="visible"
         className="relative z-10 max-w-xl lg:max-w-2xl w-full flex flex-col justify-center items-start text-left mr-auto"
       >
         {/* Category Pill */}
@@ -62,15 +61,15 @@ export default function Hero() {
           variants={itemVariants}
           className="flex flex-wrap items-center gap-2 mb-8 font-mono text-xs sm:text-sm tracking-wider text-neutral-200"
         >
-          <span className="flex items-center space-x-2 bg-black/50 px-3 py-1.5 rounded-md border border-white/15 backdrop-blur-md">
+          <span className="flex items-center space-x-2 bg-black/50 px-3.5 py-1.5 rounded-md border border-white/15 backdrop-blur-md hover:border-white/40 hover:bg-black/70 hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-all duration-300 cursor-default">
             <Shield size={15} className="text-neutral-400" />
             <span>CYBERSECURITY RESEARCHER</span>
           </span>
-          <span className="flex items-center space-x-2 bg-black/50 px-3 py-1.5 rounded-md border border-white/15 backdrop-blur-md">
+          <span className="flex items-center space-x-2 bg-black/50 px-3.5 py-1.5 rounded-md border border-white/15 backdrop-blur-md hover:border-white/40 hover:bg-black/70 hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-all duration-300 cursor-default">
             <Terminal size={15} className="text-neutral-400" />
             <span>SOFTWARE DEVELOPER</span>
           </span>
-          <span className="flex items-center space-x-2 bg-black/50 px-3 py-1.5 rounded-md border border-white/15 backdrop-blur-md">
+          <span className="flex items-center space-x-2 bg-black/50 px-3.5 py-1.5 rounded-md border border-white/15 backdrop-blur-md hover:border-white/40 hover:bg-black/70 hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-all duration-300 cursor-default">
             <Building2 size={15} className="text-neutral-400" />
             <span>FOUNDER</span>
           </span>

@@ -15,7 +15,7 @@ export default function Education() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
           className="mb-16"
         >
@@ -35,9 +35,9 @@ export default function Education() {
               key={item.degree}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+              viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: idx * 0.15 }}
-              className="bg-black/10 border border-white/10 rounded-2xl p-8 backdrop-blur-xs hover:bg-black/20 hover:border-white/20 transition-all duration-300 flex flex-col justify-between"
+              className="bg-black/10 border border-white/10 rounded-2xl p-8 backdrop-blur-xs hover:bg-black/30 hover:border-white/30 hover:shadow-[0_0_25px_rgba(255,255,255,0.07)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">

@@ -15,7 +15,7 @@ export default function FeaturedProject() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
           className="mb-16"
         >
@@ -32,9 +32,9 @@ export default function FeaturedProject() {
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: "easeOut" as const }}
-          className="bg-black/10 border border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-xs relative overflow-hidden"
+          className="bg-black/10 border border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-xs relative overflow-hidden hover:border-white/30 hover:shadow-[0_0_35px_rgba(255,255,255,0.08)] transition-all duration-500"
         >
           {/* Subtle Ambient Radial Highlight */}
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none" />

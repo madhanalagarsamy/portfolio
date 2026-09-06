@@ -25,7 +25,7 @@ export default function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
           className="mb-12"
         >
@@ -48,12 +48,12 @@ export default function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
         >
           {/* Email Card */}
-          <div className="bg-black/10 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xs hover:bg-black/20 hover:border-white/20 transition-all duration-300 flex flex-col justify-between group">
+          <div className="bg-black/10 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xs hover:bg-black/30 hover:border-white/30 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
             <div>
               <div className="flex items-center justify-between mb-6">
                 <span className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white">
@@ -83,7 +83,7 @@ export default function Contact() {
           </div>
 
           {/* GitHub Card */}
-          <div className="bg-black/10 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xs hover:bg-black/20 hover:border-white/20 transition-all duration-300 flex flex-col justify-between group">
+          <div className="bg-black/10 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xs hover:bg-black/30 hover:border-white/30 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
             <div>
               <div className="flex items-center justify-between mb-6">
                 <span className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white">

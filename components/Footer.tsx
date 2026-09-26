@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { profileData } from "@/data/profile";
 
 export default function Footer() {
@@ -15,7 +16,11 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="flex items-center space-x-6 text-xs font-mono text-neutral-400">
+        <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-6 gap-y-2 text-xs font-mono text-neutral-400">
+          <Link href="/blog" className="hover:text-emerald-400 transition-colors">
+            BLOG & WRITELOG
+          </Link>
+          <span>•</span>
           <a
             href={`mailto:${profileData.email}`}
             className="hover:text-white transition-colors"

@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { advisoryData } from "@/data/advisory";
-import { ExternalLink, CheckCircle2, ShieldAlert, Tag } from "lucide-react";
+import { ExternalLink, CheckCircle2, ArrowRight } from "lucide-react";
 
 export default function SecurityAdvisory() {
   return (
@@ -17,18 +18,28 @@ export default function SecurityAdvisory() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="mb-16"
+          className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
-          <div className="flex items-center space-x-3 mb-3">
-            <span className="text-xs font-mono text-neutral-400 tracking-widest uppercase">04 / SECURITY ADVISORY</span>
-            <span className="w-12 h-[1px] bg-neutral-700" />
+          <div>
+            <div className="flex items-center space-x-3 mb-3">
+              <span className="text-xs font-mono text-neutral-400 tracking-widest uppercase">04 / SECURITY ADVISORY</span>
+              <span className="w-12 h-[1px] bg-neutral-700" />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-3">
+              VERIFIED SECURITY RESEARCH ADVISORIES
+            </h2>
+            <p className="text-neutral-400 font-light text-base max-w-2xl">
+              Official security advisory documentation published on GitHub Security Advisory Database for open-source software ecosystems.
+            </p>
           </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-3">
-            VERIFIED SECURITY RESEARCH ADVISORIES
-          </h2>
-          <p className="text-neutral-400 font-light text-base max-w-2xl">
-            Official security advisory documentation published on GitHub Security Advisory Database for open-source software ecosystems.
-          </p>
+
+          <Link
+            href="/blog"
+            className="inline-flex items-center space-x-2 text-xs font-mono text-emerald-400 hover:text-emerald-300 tracking-wider transition-colors shrink-0"
+          >
+            <span>VIEW RESEARCH BLOG</span>
+            <ArrowRight size={14} />
+          </Link>
         </motion.div>
 
         {/* Advisories Stack */}
@@ -94,15 +105,25 @@ export default function SecurityAdvisory() {
                   </div>
                 </div>
 
-                <a
-                  href={advisory.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center space-x-2.5 px-6 py-3 rounded-full bg-white text-black font-mono text-xs tracking-widest uppercase font-semibold hover:bg-neutral-200 transition-all duration-300 shrink-0 shadow-lg shadow-white/5 hover:scale-[1.02] active:scale-[0.98] mt-2 lg:mt-0"
-                >
-                  <span>VIEW ADVISORY ON GITHUB</span>
-                  <ExternalLink size={14} />
-                </a>
+                <div className="flex flex-wrap items-center gap-3 mt-2 lg:mt-0 shrink-0">
+                  <Link
+                    href={`/blog/${advisory.id.toLowerCase()}`}
+                    className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono text-xs tracking-wider uppercase font-semibold hover:bg-emerald-500/25 transition-all duration-300 shadow-lg shadow-emerald-500/5 hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <span>READ WRITEUP</span>
+                    <ArrowRight size={13} />
+                  </Link>
+
+                  <a
+                    href={advisory.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-full bg-white text-black font-mono text-xs tracking-wider uppercase font-semibold hover:bg-neutral-200 transition-all duration-300 shadow-lg shadow-white/5 hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <span>GHSA</span>
+                    <ExternalLink size={13} />
+                  </a>
+                </div>
               </div>
 
               <p className="text-neutral-300 font-light text-sm md:text-base leading-relaxed pt-4 border-t border-white/10">

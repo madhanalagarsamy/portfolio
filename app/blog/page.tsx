@@ -104,39 +104,41 @@ export default function BlogPage() {
       <div className="relative z-10">
         <Navigation />
 
-        <main className="max-w-5xl mx-auto px-6 md:px-12 pt-32 pb-24">
+        <main className="max-w-5xl mx-auto px-4 sm:px-6 md:px-12 pt-24 sm:pt-32 pb-16 sm:pb-24">
           {/* Back link */}
-          <div className="mb-8">
+          <div className="mb-6 sm:mb-8">
             <Link
               href="/"
-              className="inline-flex items-center space-x-2 text-xs font-mono text-neutral-400 hover:text-white transition-colors"
+              className="inline-flex items-center space-x-2 text-[11px] sm:text-xs font-mono text-neutral-400 hover:text-white transition-colors"
             >
-              <ArrowLeft size={14} />
+              <ArrowLeft size={13} className="shrink-0" />
               <span>RETURN TO MAIN PORTFOLIO</span>
             </Link>
           </div>
 
           {/* Page Header */}
-          <header className="mb-14 pb-8 border-b border-white/10">
-            <div className="flex items-center space-x-2 text-xs font-mono text-emerald-400 mb-3 tracking-widest uppercase">
-              <Terminal size={14} />
-              <span>~/MADHAN-A/BLOG</span>
-              <span className="text-neutral-600">|</span>
+          <header className="mb-10 sm:mb-14 pb-6 sm:pb-8 border-b border-white/10">
+            <div className="flex flex-wrap items-center gap-2 text-[11px] sm:text-xs font-mono text-emerald-400 mb-3 tracking-wider uppercase">
+              <span className="flex items-center space-x-1.5">
+                <Terminal size={13} className="shrink-0" />
+                <span>~/MADHAN-A/BLOG</span>
+              </span>
+              <span className="text-neutral-600 hidden xs:inline">|</span>
               <span className="text-neutral-400 flex items-center space-x-1">
-                <Shield size={12} className="text-emerald-400" />
+                <Shield size={12} className="text-emerald-400 shrink-0" />
                 <span>CYBERSECURITY RESEARCH WRITELOG</span>
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-extrabold font-mono tracking-tight text-white mb-2">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold font-mono tracking-tight text-white mb-2 break-words">
               MADHAN ALAGARSAMY BLOG
             </h1>
 
-            <p className="text-emerald-400 font-mono text-xs md:text-sm tracking-wider uppercase mb-4 font-semibold">
+            <p className="text-emerald-400 font-mono text-xs sm:text-sm tracking-wider uppercase mb-3 sm:mb-4 font-semibold break-words">
               Cybersecurity Research, Vulnerability Disclosures & Technical Writeups
             </p>
 
-            <p className="text-neutral-400 text-sm md:text-base font-light max-w-3xl leading-relaxed">
+            <p className="text-neutral-400 text-xs sm:text-sm md:text-base font-light max-w-3xl leading-relaxed">
               Official <strong>Madhan Alagarsamy Blog</strong> by independent cybersecurity researcher and developer <strong>Madhan Alagarsamy (MADHAN A)</strong>. Featuring in-depth technical writeups on discovered vulnerabilities, verified GitHub Security Advisories, Apple container patches, IDOR proofs of concept, and application security architecture.
             </p>
           </header>

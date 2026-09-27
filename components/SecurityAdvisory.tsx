@@ -51,28 +51,28 @@ export default function SecurityAdvisory() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: idx * 0.15 }}
-              className="bg-black/10 border border-white/10 rounded-2xl p-8 md:p-10 backdrop-blur-xs relative overflow-hidden hover:border-emerald-500/40 hover:shadow-[0_0_40px_rgba(16,185,129,0.12)] transition-all duration-500 group"
+              className="bg-black/10 border border-white/10 rounded-2xl p-5 sm:p-8 md:p-10 backdrop-blur-xs relative overflow-hidden hover:border-emerald-500/40 hover:shadow-[0_0_40px_rgba(16,185,129,0.12)] transition-all duration-500 group"
             >
               {/* Subtle Ambient Glow */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
-              <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-6 border-b border-white/10">
-                <div className="flex items-center space-x-3">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-xs font-mono text-emerald-400 font-medium tracking-widest uppercase">
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-5 pb-5 border-b border-white/10">
+                <div className="flex items-center space-x-2.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                  <span className="text-[11px] sm:text-xs font-mono text-emerald-400 font-medium tracking-wider sm:tracking-widest uppercase">
                     {advisory.badge}
                   </span>
                 </div>
 
-                <span className="text-xs font-mono text-neutral-400">
+                <span className="text-[11px] sm:text-xs font-mono text-neutral-400 break-all">
                   TARGET REPO: <span className="text-white font-medium">{advisory.targetRepo}</span>
                 </span>
               </div>
 
               <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 mb-6">
-                <div>
+                <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2 mb-3">
-                    <h3 className="text-2xl md:text-4xl font-mono font-extrabold text-white tracking-wider">
+                    <h3 className="text-xl sm:text-2xl md:text-4xl font-mono font-extrabold text-white tracking-wide break-all sm:break-normal">
                       {advisory.id}
                     </h3>
                     {advisory.severity && (

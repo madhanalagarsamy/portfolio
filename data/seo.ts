@@ -10,9 +10,27 @@ export const SEO_CONFIG = {
   defaultTitle: "Madhan Alagarsamy (MADHAN A) — Cybersecurity Researcher | Software Developer | Founder",
   titleTemplate: "%s | Madhan Alagarsamy",
   description:
-    "Official technical portfolio and security research writelog of Madhan Alagarsamy (MADHAN A) — Independent Cybersecurity Researcher, Software Developer, and Founder of Net Corporation. Discover verified GitHub Security Advisories, Apple container patches, IDOR disclosures, and CI/CD exploitation analysis.",
+    "Official technical portfolio and security research writelog of Madhan Alagarsamy (MADHAN A) — Independent Cybersecurity Researcher, Software Developer, and Founder of Net Corporation. Read detailed writeups on Apple container DoS #2261, GitHub Security Advisories, IDOR disclosures, and CI/CD security.",
   author: "Madhan Alagarsamy",
+  blogTitle: "Madhan Alagarsamy Blog — Cybersecurity Research & Vulnerability Writeups",
+  blogDescription:
+    "Official technical research blog of Madhan Alagarsamy (MADHAN A). Featuring in-depth vulnerability writeups, verified GitHub Security Advisories, Apple container patches, IDOR proofs of concept, and defensive security engineering.",
   keywords: [
+    // Top-Rank Search Queries for "Madhan Alagarsamy Blog"
+    "Madhan Alagarsamy Blog",
+    "madhan alagarsamy blog",
+    "Madhan Alagarsamy Security Blog",
+    "Madhan Alagarsamy Research Blog",
+    "MADHAN A Blog",
+    "madhan a blog",
+    "Madhan Alagarsamy Official Blog",
+    "Madhan Alagarsamy Technical Blog",
+    "Madhan Alagarsamy Writeups",
+    "Madhan Alagarsamy Security Research",
+    "madhan alagarsamy cybersecurity",
+    "madhan alagarsamy cve",
+    "madhan alagarsamy advisories",
+
     // Personal Brand & Search Identity
     "Madhan Alagarsamy",
     "MADHAN A",

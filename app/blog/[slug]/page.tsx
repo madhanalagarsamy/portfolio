@@ -41,39 +41,42 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const postKeywords = [
+    "Madhan Alagarsamy Blog",
+    "madhan alagarsamy blog",
+    "Madhan Alagarsamy",
+    "MADHAN A",
+    "madhan alagarsamy writeups",
     post.title,
     post.category,
     ...(post.advisoryId ? [post.advisoryId] : []),
     ...(post.targetRepo ? [post.targetRepo] : []),
     ...(post.cwe || []),
     ...post.tags,
-    "Madhan Alagarsamy",
-    "MADHAN A",
     "Cybersecurity Research",
     "Vulnerability Disclosure",
     "Exploitation Analysis"
   ];
 
   return {
-    title: `${post.title} — Madhan Alagarsamy`,
+    title: `${post.title} — Madhan Alagarsamy Blog`,
     description: post.summary,
     keywords: postKeywords,
     alternates: {
       canonical: `/blog/${post.slug}`,
     },
     openGraph: {
-      title: `${post.title} — Madhan Alagarsamy`,
+      title: `${post.title} — Madhan Alagarsamy Blog`,
       description: post.summary,
       url: `${SITE_URL}/blog/${post.slug}`,
       type: "article",
       publishedTime: post.publishedDate,
       authors: ["Madhan Alagarsamy"],
       tags: post.tags,
-      siteName: "Madhan Alagarsamy Portfolio & Research",
+      siteName: "Madhan Alagarsamy Blog",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} — Madhan Alagarsamy`,
+      title: `${post.title} — Madhan Alagarsamy Blog`,
       description: post.summary,
       creator: "@madhanalagarsamy",
     },
@@ -127,7 +130,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Research Blog",
+        name: "Madhan Alagarsamy Blog",
         item: `${SITE_URL}/blog`,
       },
       {

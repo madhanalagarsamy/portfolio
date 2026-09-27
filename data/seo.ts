@@ -1,10 +1,5 @@
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "https://madhanalagarsamy.vercel.app");
+  process.env.NEXT_PUBLIC_SITE_URL || "https://madhanalagarsamy.site";
 
 export const SEO_CONFIG = {
   defaultTitle: "Madhan Alagarsamy (MADHAN A) — Cybersecurity Researcher | Software Developer | Founder",
@@ -12,13 +7,24 @@ export const SEO_CONFIG = {
   description:
     "Official technical portfolio and security research writelog of Madhan Alagarsamy (MADHAN A) — Independent Cybersecurity Researcher, Software Developer, and Founder of Net Corporation. Read detailed writeups on Apple container DoS #2261, GitHub Security Advisories, IDOR disclosures, and CI/CD security.",
   author: "Madhan Alagarsamy",
-  blogTitle: "Madhan Alagarsamy Blog — Cybersecurity Research & Vulnerability Writeups",
+  blogTitle: "Security Research Blog & Advisories — Madhan Alagarsamy",
   blogDescription:
-    "Official technical research blog of Madhan Alagarsamy (MADHAN A). Featuring in-depth vulnerability writeups, verified GitHub Security Advisories, Apple container patches, IDOR proofs of concept, and defensive security engineering.",
+    "Official Security Research Blog & Advisories by Madhan Alagarsamy (MADHAN A). Featuring in-depth cybersecurity research, vulnerability disclosures, verified GitHub Security Advisories, Apple container patches, IDOR proofs of concept, and defensive security engineering.",
   keywords: [
-    // Top-Rank Search Queries for "Madhan Alagarsamy Blog"
+    // Exact Target Keywords for "Security Research Blog & Advisories — Madhan Alagarsamy"
+    "Security Research Blog & Advisories — Madhan Alagarsamy",
+    "Security Research Blog & Advisories",
+    "security research blog & advisories",
+    "Security Research Blog",
+    "security research blog",
     "Madhan Alagarsamy Blog",
     "madhan alagarsamy blog",
+    "Madhan Alagarsamy Security Research",
+    "madhan alagarsamy security research",
+    "Madhan Alagarsamy Security Advisories",
+    "madhan alagarsamy security advisories",
+    "Madhan Alagarsamy Advisories",
+    "madhan alagarsamy advisories",
     "Madhan Alagarsamy Security Blog",
     "Madhan Alagarsamy Research Blog",
     "MADHAN A Blog",
@@ -26,10 +32,12 @@ export const SEO_CONFIG = {
     "Madhan Alagarsamy Official Blog",
     "Madhan Alagarsamy Technical Blog",
     "Madhan Alagarsamy Writeups",
-    "Madhan Alagarsamy Security Research",
+    "madhan alagarsamy writeups",
     "madhan alagarsamy cybersecurity",
     "madhan alagarsamy cve",
-    "madhan alagarsamy advisories",
+    "madhanalagarsamy.site",
+    "madhanalagarsamy.site/blog",
+    "https://madhanalagarsamy.site/blog",
 
     // Personal Brand & Search Identity
     "Madhan Alagarsamy",

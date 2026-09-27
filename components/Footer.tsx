@@ -17,8 +17,12 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-6 gap-y-2 text-xs font-mono text-neutral-400">
-          <Link href="/blog" className="hover:text-emerald-400 transition-colors">
-            BLOG & WRITELOG
+          <Link
+            href="/blog"
+            title="Security Research Blog & Advisories — Madhan Alagarsamy"
+            className="hover:text-emerald-400 transition-colors"
+          >
+            SECURITY BLOG & ADVISORIES
           </Link>
           <span>•</span>
           <a

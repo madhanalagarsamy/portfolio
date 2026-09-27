@@ -36,8 +36,9 @@ export default function SecurityAdvisory() {
           <Link
             href="/blog"
             className="inline-flex items-center space-x-2 text-xs font-mono text-emerald-400 hover:text-emerald-300 tracking-wider transition-colors shrink-0"
+            title="Security Research Blog & Advisories — Madhan Alagarsamy"
           >
-            <span>VIEW RESEARCH BLOG</span>
+            <span>SECURITY RESEARCH BLOG & ADVISORIES</span>
             <ArrowRight size={14} />
           </Link>
         </motion.div>

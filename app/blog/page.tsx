@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: SEO_CONFIG.blogTitle,
     description: SEO_CONFIG.blogDescription,
     url: `${SITE_URL}/blog`,
-    siteName: "Madhan Alagarsamy Blog",
+    siteName: "Security Research Blog & Advisories — Madhan Alagarsamy",
     locale: "en_US",
     type: "website",
   },
@@ -39,17 +39,24 @@ export default function BlogPage() {
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "Madhan Alagarsamy Blog",
+    name: "Security Research Blog & Advisories — Madhan Alagarsamy",
     alternateName: [
+      "Madhan Alagarsamy Blog",
+      "madhan alagarsamy blog",
+      "Security Research Blog & Advisories",
       "Madhan Alagarsamy Security Blog",
       "Madhan Alagarsamy Research Blog",
       "MADHAN A Blog",
       "Madhan Alagarsamy Technical Blog",
     ],
-    headline: "Madhan Alagarsamy Blog — Cybersecurity Research & Vulnerability Disclosures",
+    headline: "Security Research Blog & Advisories — Madhan Alagarsamy",
     description: SEO_CONFIG.blogDescription,
     url: `${SITE_URL}/blog`,
     inLanguage: "en-US",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/blog`,
+    },
     author: {
       "@type": "Person",
       name: "Madhan Alagarsamy",
@@ -87,7 +94,7 @@ export default function BlogPage() {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Madhan Alagarsamy Blog",
+        name: "Security Research Blog & Advisories",
         item: `${SITE_URL}/blog`,
       },
     ],
@@ -121,25 +128,25 @@ export default function BlogPage() {
             <div className="flex flex-wrap items-center gap-2 text-[11px] sm:text-xs font-mono text-emerald-400 mb-3 tracking-wider uppercase">
               <span className="flex items-center space-x-1.5">
                 <Terminal size={13} className="shrink-0" />
-                <span>~/MADHAN-A/BLOG</span>
+                <span>~/MADHAN-A/SECURITY-RESEARCH</span>
               </span>
               <span className="text-neutral-600 hidden xs:inline">|</span>
               <span className="text-neutral-400 flex items-center space-x-1">
                 <Shield size={12} className="text-emerald-400 shrink-0" />
-                <span>CYBERSECURITY RESEARCH WRITELOG</span>
+                <span>ADVISORIES & RESEARCH WRITELOG</span>
               </span>
             </div>
 
             <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold font-mono tracking-tight text-white mb-2 break-words">
-              MADHAN ALAGARSAMY BLOG
+              SECURITY RESEARCH BLOG & ADVISORIES
             </h1>
 
             <p className="text-emerald-400 font-mono text-xs sm:text-sm tracking-wider uppercase mb-3 sm:mb-4 font-semibold break-words">
-              Cybersecurity Research, Vulnerability Disclosures & Technical Writeups
+              Madhan Alagarsamy — Cybersecurity Research, Vulnerability Disclosures & Technical Writeups
             </p>
 
             <p className="text-neutral-400 text-xs sm:text-sm md:text-base font-light max-w-3xl leading-relaxed">
-              Official <strong>Madhan Alagarsamy Blog</strong> by independent cybersecurity researcher and developer <strong>Madhan Alagarsamy (MADHAN A)</strong>. Featuring in-depth technical writeups on discovered vulnerabilities, verified GitHub Security Advisories, Apple container patches, IDOR proofs of concept, and application security architecture.
+              Official <strong>Security Research Blog &amp; Advisories</strong> (also known as <strong>Madhan Alagarsamy Blog</strong>) by independent cybersecurity researcher and developer <strong>Madhan Alagarsamy (MADHAN A)</strong>. Featuring in-depth technical writeups on discovered vulnerabilities, verified GitHub Security Advisories, Apple container patches, IDOR proofs of concept, and defensive security engineering.
             </p>
           </header>
 

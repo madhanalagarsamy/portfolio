@@ -41,11 +41,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const postKeywords = [
+    "Security Research Blog & Advisories — Madhan Alagarsamy",
+    "Security Research Blog & Advisories",
     "Madhan Alagarsamy Blog",
     "madhan alagarsamy blog",
     "Madhan Alagarsamy",
     "MADHAN A",
     "madhan alagarsamy writeups",
+    "Madhan Alagarsamy Security Research",
     post.title,
     post.category,
     ...(post.advisoryId ? [post.advisoryId] : []),
@@ -54,29 +57,30 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ...post.tags,
     "Cybersecurity Research",
     "Vulnerability Disclosure",
-    "Exploitation Analysis"
+    "Exploitation Analysis",
+    "madhanalagarsamy.site",
   ];
 
   return {
-    title: `${post.title} — Madhan Alagarsamy Blog`,
+    title: `${post.title} — Security Research Blog & Advisories | Madhan Alagarsamy`,
     description: post.summary,
     keywords: postKeywords,
     alternates: {
       canonical: `/blog/${post.slug}`,
     },
     openGraph: {
-      title: `${post.title} — Madhan Alagarsamy Blog`,
+      title: `${post.title} — Security Research Blog & Advisories | Madhan Alagarsamy`,
       description: post.summary,
       url: `${SITE_URL}/blog/${post.slug}`,
       type: "article",
       publishedTime: post.publishedDate,
       authors: ["Madhan Alagarsamy"],
       tags: post.tags,
-      siteName: "Madhan Alagarsamy Blog",
+      siteName: "Security Research Blog & Advisories — Madhan Alagarsamy",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} — Madhan Alagarsamy Blog`,
+      title: `${post.title} — Security Research Blog & Advisories | Madhan Alagarsamy`,
       description: post.summary,
       creator: "@madhanalagarsamy",
     },
@@ -130,7 +134,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Madhan Alagarsamy Blog",
+        name: "Security Research Blog & Advisories",
         item: `${SITE_URL}/blog`,
       },
       {
@@ -161,7 +165,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </Link>
             <span className="shrink-0 text-neutral-600">/</span>
             <Link href="/blog" className="hover:text-white transition-colors shrink-0">
-              BLOG
+              RESEARCH BLOG & ADVISORIES
             </Link>
             <span className="shrink-0 text-neutral-600">/</span>
             <span className="text-neutral-400 truncate max-w-[140px] sm:max-w-xs">{post.slug}</span>

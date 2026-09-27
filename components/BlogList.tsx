@@ -131,7 +131,15 @@ export default function BlogList({ posts }: BlogListProps) {
                       </span>
                     )}
                     {post.severity && (
-                      <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 uppercase">
+                      <span
+                        className={`px-2 py-0.5 rounded font-mono text-[11px] uppercase ${
+                          post.severity.toLowerCase() === "critical"
+                            ? "bg-rose-500/15 border border-rose-500/40 text-rose-300 font-bold shadow-[0_0_10px_rgba(244,63,94,0.25)]"
+                            : post.severity.toLowerCase() === "high"
+                            ? "bg-orange-500/15 border border-orange-500/40 text-orange-300 font-semibold"
+                            : "bg-amber-500/10 border border-amber-500/30 text-amber-300 font-medium"
+                        }`}
+                      >
                         {post.severity}
                       </span>
                     )}

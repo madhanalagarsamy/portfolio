@@ -95,7 +95,15 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </span>
               )}
               {post.severity && (
-                <span className="inline-flex items-center space-x-1 px-3 py-1 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 font-mono text-xs font-medium uppercase">
+                <span
+                  className={`inline-flex items-center space-x-1 px-3 py-1 rounded font-mono text-xs font-medium uppercase ${
+                    post.severity.toLowerCase() === "critical"
+                      ? "bg-rose-500/15 border border-rose-500/40 text-rose-300 font-bold shadow-[0_0_12px_rgba(244,63,94,0.25)]"
+                      : post.severity.toLowerCase() === "high"
+                      ? "bg-orange-500/15 border border-orange-500/40 text-orange-300 font-semibold"
+                      : "bg-amber-500/10 border border-amber-500/30 text-amber-300 font-medium"
+                  }`}
+                >
                   <ShieldAlert size={13} />
                   <span>SEVERITY: {post.severity}</span>
                 </span>

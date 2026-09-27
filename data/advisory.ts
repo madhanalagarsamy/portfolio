@@ -15,6 +15,18 @@ export interface AdvisoryItem {
 export const advisoryData = {
   advisories: [
     {
+      id: "GHSA-8rfq-rmx4-8qhr",
+      title: "Shell Injection via Composite Action Inputs in gouef/githubtoplanguages",
+      targetRepo: "gouef / githubtoplanguages",
+      platform: "GitHub Security Advisory",
+      url: "https://github.com/gouef/githubtoplanguages/security/advisories/GHSA-8rfq-rmx4-8qhr",
+      badge: "VERIFIED GITHUB SECURITY ADVISORY",
+      severity: "Critical",
+      cwe: ["CWE-77", "CWE-78", "CWE-94"],
+      publishedDate: "Sep 2026",
+      description: "Discovered and responsibly disclosed a Critical shell command injection vulnerability in GitHub Actions composite action inputs (botName & botEmail), allowing arbitrary command execution on the CI runner, repository token exfiltration, and supply chain compromise."
+    },
+    {
       id: "GHSA-9v52-vhvw-4w5c",
       title: "Cross-meeting presentation upload via unbound upload token (IDOR)",
       targetRepo: "bigbluebutton / bigbluebutton",

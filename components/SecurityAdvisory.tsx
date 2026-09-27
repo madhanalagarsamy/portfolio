@@ -76,7 +76,15 @@ export default function SecurityAdvisory() {
                       {advisory.id}
                     </h3>
                     {advisory.severity && (
-                      <span className="px-2.5 py-1 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 font-mono text-xs uppercase font-medium">
+                      <span
+                        className={`px-2.5 py-1 rounded font-mono text-xs uppercase ${
+                          advisory.severity.toLowerCase() === "critical"
+                            ? "bg-rose-500/15 border border-rose-500/40 text-rose-300 font-bold shadow-[0_0_12px_rgba(244,63,94,0.25)]"
+                            : advisory.severity.toLowerCase() === "high"
+                            ? "bg-orange-500/15 border border-orange-500/40 text-orange-300 font-semibold"
+                            : "bg-amber-500/10 border border-amber-500/30 text-amber-300 font-medium"
+                        }`}
+                      >
                         {advisory.severity}
                       </span>
                     )}

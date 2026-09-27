@@ -163,7 +163,11 @@ export default async function BlogPostPage({ params }: PageProps) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-all font-mono text-xs"
                 >
-                  <span>OFFICIAL GITHUB ADVISORY</span>
+                  <span>
+                    {post.advisoryId?.startsWith("GHSA")
+                      ? "OFFICIAL GITHUB ADVISORY"
+                      : "OFFICIAL ISSUE & FIX"}
+                  </span>
                   <ExternalLink size={12} />
                 </a>
               )}

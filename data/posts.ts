@@ -52,15 +52,15 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "ghsa-685x-qqgg-rmmg",
+    slug: "apple-container-connecthandler-fd-leak",
     title: "File Descriptor Exhaustion in Apple Container ConnectHandler (DoS) — Acknowledged by Apple",
     summary:
-      "A deep dive into uncovering a socket file descriptor leak in Apple's official container runtime (apple/container) inside the Swift-NIO ConnectHandler, leading to complete DoS under rapid connection churn. Responsibly reported via GHSA, acknowledged by Apple maintainers ('Thanks to @madhanalagarsamy'), and resolved in PR #2260.",
+      "A deep dive into uncovering a socket file descriptor leak in Apple's official container runtime (apple/container) inside the Swift-NIO ConnectHandler, leading to complete DoS under rapid connection churn. Responsibly reported to Apple maintainers, acknowledged in public issue #2261 ('Thanks to @madhanalagarsamy'), and resolved in PR #2260.",
     publishedDate: "Sep 2026",
     readTime: "9 min read",
     category: "Security Advisory",
     tags: ["Apple", "Swift NIO", "DoS", "Resource Leak", "CWE-400", "CWE-775", "Networking", "Disclosure"],
-    advisoryId: "GHSA-685x-qqgg-rmmg / Apple #2261",
+    advisoryId: "apple/container#2261",
     targetRepo: "apple / container",
     severity: "High",
     cwe: [
@@ -72,8 +72,8 @@ export const blogPosts: BlogPost[] = [
     overview:
       "During an architecture review of Apple's open-source container engine (apple/container), a critical resource exhaustion flaw was uncovered in the Swift-NIO port-forwarding component (Sources/SocketForwarder/ConnectHandler.swift). When an inbound client connection aborts or disconnects while the backend socket is still being established, the error-handling closure incorrectly invoked context.channel.close() on the already-inactive frontend channel rather than closing the newly allocated backend channel. This left backend sockets open indefinitely, leaking one file descriptor per aborted connection and causing a complete Denial of Service (EMFILE / 'Too many open files').",
     timeline: [
-      { date: "August 21, 2026", event: "Vulnerability identified in ConnectHandler.swift; opened private security advisory GHSA-685x-qqgg-rmmg." },
-      { date: "Late August 2026", event: "Apple maintainer (@jglogan) reviewed report ('Good catch') and requested cross-platform reproduction." },
+      { date: "August 21, 2026", event: "Identified socket file descriptor leak in ConnectHandler.swift; submitted vulnerability disclosure directly to Apple container team." },
+      { date: "Late August 2026", event: "Apple maintainer (@jglogan) reviewed findings ('Good catch') and requested cross-platform reproduction." },
       { date: "September 2026", event: "Formulated and submitted a byte-for-byte standalone Swift-NIO reproduction on Linux demonstrating monotonic FD growth (from 25 to 2,387 leaked FDs), alongside a macOS native test script." },
       { date: "September 2026", event: "Apple maintainer (@egernst) verified the bug: 'I appreciate your digging, and I do think we have a bug to fix here.'" },
       { date: "September 2026", event: "Apple opened public issue #2261 with credit ('Thanks to @madhanalagarsamy for helping identify this bug!') and shipped the official fix in PR #2260." }

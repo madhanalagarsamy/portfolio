@@ -115,7 +115,7 @@ export default function SecurityAdvisory() {
 
                 <div className="flex flex-wrap items-center gap-3 mt-2 lg:mt-0 shrink-0">
                   <Link
-                    href={`/blog/${advisory.id.toLowerCase()}`}
+                    href={`/blog/${advisory.slug || advisory.id.toLowerCase()}`}
                     className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono text-xs tracking-wider uppercase font-semibold hover:bg-emerald-500/25 transition-all duration-300 shadow-lg shadow-emerald-500/5 hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <span>READ WRITEUP</span>
@@ -128,7 +128,7 @@ export default function SecurityAdvisory() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-full bg-white text-black font-mono text-xs tracking-wider uppercase font-semibold hover:bg-neutral-200 transition-all duration-300 shadow-lg shadow-white/5 hover:scale-[1.02] active:scale-[0.98]"
                   >
-                    <span>GHSA</span>
+                    <span>{advisory.id.startsWith("GHSA") ? "GHSA" : "VIEW ISSUE"}</span>
                     <ExternalLink size={13} />
                   </a>
                 </div>

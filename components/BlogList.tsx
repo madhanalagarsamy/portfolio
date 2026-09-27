@@ -192,9 +192,9 @@ export default function BlogList({ posts }: BlogListProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs font-mono text-neutral-400 hover:text-white flex items-center space-x-1 transition-colors"
-                      title="View GitHub Advisory"
+                      title={post.advisoryId?.startsWith("GHSA") ? "View GitHub Advisory" : "View Source Issue"}
                     >
-                      <span>GHSA</span>
+                      <span>{post.advisoryId?.startsWith("GHSA") ? "GHSA" : "ISSUE"}</span>
                       <ExternalLink size={12} />
                     </a>
                   )}

@@ -1,5 +1,6 @@
 export interface AdvisoryItem {
   id: string;
+  slug?: string;
   title: string;
   targetRepo: string;
   platform: string;
@@ -15,10 +16,11 @@ export interface AdvisoryItem {
 export const advisoryData = {
   advisories: [
     {
-      id: "GHSA-685x-qqgg-rmmg",
+      id: "apple/container#2261",
+      slug: "apple-container-connecthandler-fd-leak",
       title: "File Descriptor Exhaustion in Apple Container ConnectHandler (DoS)",
       targetRepo: "apple / container",
-      platform: "GitHub Security Advisory & Apple Issue #2261",
+      platform: "Apple Open Source Security & Bug Fix",
       url: "https://github.com/apple/container/issues/2261",
       badge: "ACKNOWLEDGED BY APPLE · FIXED IN PR #2260",
       severity: "High",

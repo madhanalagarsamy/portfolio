@@ -15,6 +15,18 @@ export interface AdvisoryItem {
 export const advisoryData = {
   advisories: [
     {
+      id: "GHSA-x3cj-mm38-329g",
+      title: "Self-Referential Composite Action Executes Long-Lived PAT on Scheduled Runs",
+      targetRepo: "gouef / githubtoplanguages",
+      platform: "GitHub Security Advisory",
+      url: "https://github.com/gouef/githubtoplanguages/security/advisories/GHSA-x3cj-mm38-329g",
+      badge: "VERIFIED GITHUB SECURITY ADVISORY",
+      severity: "Critical",
+      cwe: ["CWE-829"],
+      publishedDate: "Sep 2026",
+      description: "Discovered and responsibly disclosed a Critical security vulnerability where self-referential mutable composite action calls (@main) bound to long-lived classic Personal Access Tokens (PAT) allow automated, unreviewed code execution and account-level token persistence on scheduled CI runs."
+    },
+    {
       id: "GHSA-8rfq-rmx4-8qhr",
       title: "Shell Injection via Composite Action Inputs in gouef/githubtoplanguages",
       targetRepo: "gouef / githubtoplanguages",

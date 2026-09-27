@@ -52,6 +52,90 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "ghsa-x3cj-mm38-329g",
+    title: "Self-Referential Composite Action Executes Long-Lived PAT on Scheduled Runs",
+    summary:
+      "A deep dive into discovering and responsibly disclosing a Critical architectural flaw in gouef/githubtoplanguages where top-languages.yml consumes its own composite action at mutable ref @main with an injected classic Personal Access Token (PAT), creating an unattended arbitrary code execution and token persistence channel.",
+    publishedDate: "Sep 2026",
+    readTime: "8 min read",
+    category: "Security Advisory",
+    tags: ["CI/CD Security", "GitHub Actions", "Supply Chain", "PAT Theft", "CWE-829", "Persistence", "Disclosure"],
+    advisoryId: "GHSA-x3cj-mm38-329g",
+    targetRepo: "gouef / githubtoplanguages",
+    severity: "Critical",
+    cwe: ["CWE-829: Inclusion of Functionality from Untrusted Control Sphere"],
+    patchedVersions: ["Review in progress / Pending patch"],
+    githubAdvisoryUrl: "https://github.com/gouef/githubtoplanguages/security/advisories/GHSA-x3cj-mm38-329g",
+    overview:
+      "In gouef/githubtoplanguages, the scheduled workflow top-languages.yml invoked its own composite action using a mutable branch reference (uses: gouef/githubtoplanguages@main) while passing secrets.USER_GITHUB_TOKEN (a long-lived classic PAT with write privileges) into the environment. Because GitHub Actions resolves mutable branch refs to the latest branch head on each run, any merged change to action.yml automatically executes with the PAT's account-level privileges on scheduled cron runs, requiring no workflow modification or review approval.",
+    timeline: [
+      { date: "2 weeks ago", event: "Identified self-referential mutable composite action pattern with injected classic PAT." },
+      { date: "2 weeks ago", event: "Executed controlled replication PoC (runner-selfref-poc) proving weaponized action execution and Gist creation via injected PAT." },
+      { date: "2 weeks ago", event: "Conducted live on-target probe (PR #6) confirming fork-PR approval boundaries and establishing the insider/merge attack vector." },
+      { date: "2 weeks ago", event: "Reported privately to maintainer (@JanGalek) via GitHub Security Advisories; accepted and CVE requested." },
+      { date: "2 weeks ago", event: "Official GitHub Security Advisory GHSA-x3cj-mm38-329g published on GitHub Advisory Database as Critical severity." }
+    ],
+    vulnerabilityDetails: [
+      {
+        heading: "The Self-Referential Pattern (.github/workflows/top-languages.yml)",
+        description:
+          "The repository's core automation workflow runs on a daily schedule (0 0 1 * *) and on pushes to main. Instead of referencing local steps or a pinned commit SHA, it calls its own action via a mutable remote branch reference:",
+        codeSnippet: {
+          language: "yaml",
+          caption: ".github/workflows/top-languages.yml:51-68",
+          code: `jobs:\n  build-and-run:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Run custom action\n        uses: gouef/githubtoplanguages@main # Self-reference to this repo's mutable main\n        env:\n          GITHUB_TOKEN: \${{ secrets.USER_GITHUB_TOKEN }} # Long-lived classic PAT`
+        }
+      },
+      {
+        heading: "The Root Cause Chain & Token-Level Persistence",
+        description:
+          "GitHub Actions downloads composite actions fresh on every invocation, resolving @main to the current head commit. Because action.yml uses runs: { using: composite } with arbitrary bash steps (git config, go build, ./app, git push), whoever controls the content of action.yml controls arbitrary code execution on the runner. Passing USER_GITHUB_TOKEN into every step grants account-level write access that outlives the ephemeral runner VM until revoked."
+      }
+    ],
+    poc: {
+      description:
+        "Validation was conducted through both a controlled lab environment and live on-target assessment.",
+      steps: [
+        "Controlled PoC Setup: Created runner-selfref-poc replicating top-languages.yml with uses: madhanalagarsamy/runner-selfref-poc@main and injected test PAT.",
+        "Baseline verification: Confirmed action executed from main at SHA c38501c with token authenticated as owner.",
+        "Weaponization: Merged a malicious curl step into action.yml only (zero edits to .github/workflows/*).",
+        "Re-run execution: The scheduled workflow automatically pulled updated SHA 53d2f02; the malicious step ran and successfully executed a privileged write API call (created private Gist ddbb9dac...).",
+        "Live on-target validation (PR #6): Probed fork-PR behavior; confirmed GitHub's first-time contributor approval gate blocks external unapproved execution, proving the primary attack vector is insider merge or maintainer account compromise."
+      ],
+      requestSnippet: {
+        language: "yaml",
+        caption: "Weaponized action.yml payload step",
+        code: `- name: MALICIOUS STEP (merged via action.yml@main)\n  shell: bash\n  run: |\n    echo "=== ATTACKER CODE EXECUTED ON NEXT TRIGGERED RUN ==="\n    curl -s -X POST \\\n      -H "Authorization: Bearer $GITHUB_TOKEN" \\\n      -H "Accept: application/vnd.github+json" \\\n      https://api.github.com/gists \\\n      -d '{"description":"poc","public":false,"files":{"pwn.txt":{"content":"pwned"}}}'`
+      }
+    },
+    impact:
+      "Critical Severity (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H). Attackers obtaining a merged commit to action.yml gain persistent, unattended execution bound to a broad write-capable classic Personal Access Token. This enables full source code manipulation, commit poisoning, backdoor insertion into release artifacts, exfiltration of all repository secrets, and supply-chain compromise for any third-party workflow invoking gouef/githubtoplanguages@main.",
+    remediation:
+      "1) Pin composite actions to immutable commit SHAs (e.g. uses: gouef/githubtoplanguages@<full-commit-sha>) or use relative local action syntax (uses: ./.github/actions/...). 2) Replace classic PATs with fine-grained least-privilege tokens or the default ephemeral GITHUB_TOKEN. 3) Enforce CODEOWNERS and branch protection rules requiring mandatory peer review on .github/** and action.yml. 4) Revoke and rotate existing USER_GITHUB_TOKEN.",
+    patchDetails: {
+      description: "Recommended remediation: SHA pinning & least-privilege token binding",
+      codeSnippet: {
+        language: "yaml",
+        caption: "Hardened workflow configuration",
+        code: `steps:\n  - uses: actions/checkout@v4\n  # Option A: Local action reference\n  - name: Run hardened local action\n    uses: ./ # uses local checkout rather than pulling mutable @main\n    env:\n      GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }} # ephemeral repository token`
+      }
+    },
+    references: [
+      {
+        title: "Official GitHub Security Advisory GHSA-x3cj-mm38-329g",
+        url: "https://github.com/gouef/githubtoplanguages/security/advisories/GHSA-x3cj-mm38-329g"
+      },
+      {
+        title: "CWE-829: Inclusion of Functionality from Untrusted Control Sphere",
+        url: "https://cwe.mitre.org/data/definitions/829.html"
+      },
+      {
+        title: "GitHub Docs: Using SHA pinning for third-party actions",
+        url: "https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions"
+      }
+    ]
+  },
+  {
     slug: "ghsa-8rfq-rmx4-8qhr",
     title: "Shell Injection via Composite Action Inputs in gouef/githubtoplanguages",
     summary:

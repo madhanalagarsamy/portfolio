@@ -15,6 +15,19 @@ export interface AdvisoryItem {
 export const advisoryData = {
   advisories: [
     {
+      id: "GHSA-685x-qqgg-rmmg",
+      title: "File Descriptor Exhaustion in Apple Container ConnectHandler (DoS)",
+      targetRepo: "apple / container",
+      platform: "GitHub Security Advisory & Apple Issue #2261",
+      url: "https://github.com/apple/container/issues/2261",
+      badge: "ACKNOWLEDGED BY APPLE · FIXED IN PR #2260",
+      severity: "High",
+      cwe: ["CWE-400", "CWE-775"],
+      patchedVersions: ["PR #2260 (commit 56b95bc)"],
+      publishedDate: "Aug - Sep 2026",
+      description: "Discovered a socket file descriptor leak in Apple Container's Swift-NIO ConnectHandler where prematurely aborted client connections caused unreleased backend sockets, leading to monotonic FD exhaustion DoS. Officially acknowledged by Apple maintainers ('Thanks to @madhanalagarsamy for helping identify this bug!') and resolved in PR #2260."
+    },
+    {
       id: "GHSA-x3cj-mm38-329g",
       title: "Self-Referential Composite Action Executes Long-Lived PAT on Scheduled Runs",
       targetRepo: "gouef / githubtoplanguages",

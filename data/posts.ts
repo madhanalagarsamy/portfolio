@@ -52,6 +52,97 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "ghsa-685x-qqgg-rmmg",
+    title: "File Descriptor Exhaustion in Apple Container ConnectHandler (DoS) — Acknowledged by Apple",
+    summary:
+      "A deep dive into uncovering a socket file descriptor leak in Apple's official container runtime (apple/container) inside the Swift-NIO ConnectHandler, leading to complete DoS under rapid connection churn. Responsibly reported via GHSA, acknowledged by Apple maintainers ('Thanks to @madhanalagarsamy'), and resolved in PR #2260.",
+    publishedDate: "Sep 2026",
+    readTime: "9 min read",
+    category: "Security Advisory",
+    tags: ["Apple", "Swift NIO", "DoS", "Resource Leak", "CWE-400", "CWE-775", "Networking", "Disclosure"],
+    advisoryId: "GHSA-685x-qqgg-rmmg / Apple #2261",
+    targetRepo: "apple / container",
+    severity: "High",
+    cwe: [
+      "CWE-400: Uncontrolled Resource Consumption",
+      "CWE-775: Missing Release of File Descriptor or Handle after Effective Lifetime"
+    ],
+    patchedVersions: ["apple/container PR #2260 (commit 56b95bc)"],
+    githubAdvisoryUrl: "https://github.com/apple/container/issues/2261",
+    overview:
+      "During an architecture review of Apple's open-source container engine (apple/container), a critical resource exhaustion flaw was uncovered in the Swift-NIO port-forwarding component (Sources/SocketForwarder/ConnectHandler.swift). When an inbound client connection aborts or disconnects while the backend socket is still being established, the error-handling closure incorrectly invoked context.channel.close() on the already-inactive frontend channel rather than closing the newly allocated backend channel. This left backend sockets open indefinitely, leaking one file descriptor per aborted connection and causing a complete Denial of Service (EMFILE / 'Too many open files').",
+    timeline: [
+      { date: "August 21, 2026", event: "Vulnerability identified in ConnectHandler.swift; opened private security advisory GHSA-685x-qqgg-rmmg." },
+      { date: "Late August 2026", event: "Apple maintainer (@jglogan) reviewed report ('Good catch') and requested cross-platform reproduction." },
+      { date: "September 2026", event: "Formulated and submitted a byte-for-byte standalone Swift-NIO reproduction on Linux demonstrating monotonic FD growth (from 25 to 2,387 leaked FDs), alongside a macOS native test script." },
+      { date: "September 2026", event: "Apple maintainer (@egernst) verified the bug: 'I appreciate your digging, and I do think we have a bug to fix here.'" },
+      { date: "September 2026", event: "Apple opened public issue #2261 with credit ('Thanks to @madhanalagarsamy for helping identify this bug!') and shipped the official fix in PR #2260." }
+    ],
+    vulnerabilityDetails: [
+      {
+        heading: "Architecture & ConnectHandler Pipeline",
+        description:
+          "Apple Container uses Apple's Swift-NIO framework for high-performance asynchronous networking. The ConnectHandler is an inbound channel handler responsible for bridging an incoming client socket to a backend container service whenever port-forwarding is enabled (e.g. container run -p 18080:80):",
+        codeSnippet: {
+          language: "swift",
+          caption: "Vulnerable code in Sources/SocketForwarder/ConnectHandler.swift:60-76",
+          code: `ClientBootstrap(group: context.eventLoop)\n  .connectTimeout(self.connectTimeout)\n  .connect(to: serverAddress)\n  .assumeIsolatedUnsafeUnchecked()\n  .whenComplete { result in\n    switch result {\n    case .success(let channel):\n      guard context.channel.isActive else {\n        self.log?.trace("backend - frontend channel closed, closing backend connection")\n        context.channel.close(promise: nil) // BUG: Closes dead frontend instead of newly opened backend \`channel\`\n        return\n      }\n      self.log?.trace("backend - connected")\n      self.glue(channel, context: context)\n    case .failure(let error):\n      ...\n    }\n  }`
+        }
+      },
+      {
+        heading: "Root Cause: Misdirected Channel Closure & FD Leaks",
+        description:
+          "Notice the guard context.channel.isActive branch: when the frontend client disconnects during the connection establishment phase, context.channel is already inactive. Instead of shutting down the newly established backend channel (the socket returned in result), the code called context.channel.close(promise: nil) — closing the already-dead frontend again! The backend socket was orphaned, never closed, and leaked a live file descriptor inside the host process."
+      }
+    ],
+    poc: {
+      description:
+        "The proof of concept tested rapid connection aborts, proving deterministic, monotonic file descriptor growth until the OS limit is exhausted.",
+      steps: [
+        "Constructed a standalone Swift-NIO test harness compiling the unmodified SocketForwarder files from apple/container on Linux.",
+        "Ran a client script initiating TCP connections to the forwarder port and terminating them immediately before the handshake finished.",
+        "Tracked active file descriptors via /proc/self/fd: baseline 25 FDs rose to 270 at 500 iterations, 981 at 2,000 iterations, and 2,387 at 5,000 iterations.",
+        "Demonstrated the patch: Changing context.channel.close() to channel.close() resulted in a settled FD count of 24 (delta 0).",
+        "Formulated macOS validation script using container run -p 18080:80 and monitoring daemon handle growth with lsof -p $PID."
+      ],
+      requestSnippet: {
+        language: "python",
+        caption: "Rapid connection abort loop (exploit script)",
+        code: `#!/usr/bin/env python3\nimport socket, time\n\nHOST, PORT = "127.0.0.1", 18080\nfor i in range(1, 5001):\n    try:\n        s = socket.create_connection((HOST, PORT), timeout=0.5)\n        s.close() # Drop client immediately; races against backend connect\n    except Exception:\n        pass\n    if i % 500 == 0:\n        print(f"[+] {i} connections aborted")\n        time.sleep(0.01)`
+      }
+    },
+    impact:
+      "High Severity Denial of Service (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). Unauthenticated attackers with network access to forwarded ports can trigger thousands of aborted connections in seconds. Monotonic socket accumulation exhausts the process file descriptor limit (EMFILE / 'Too many open files'), freezing all container port forwarding, crashing active network proxies, and disrupting production workloads until the container daemon is killed and restarted.",
+    remediation:
+      "Apple resolved the issue in Pull Request #2260 by updating ConnectHandler.swift to close the newly connected backend channel (\`channel.close(promise: nil)\`) instead of the already-inactive frontend \`context.channel\`.",
+    patchDetails: {
+      description: "Apple PR #2260 (commit 56b95bc): Close backend channel immediately if frontend closes",
+      codeSnippet: {
+        language: "diff",
+        caption: "Apple commit 56b95bc diff in ConnectHandler.swift",
+        code: `@@ -64,7 +64,7 @@ extension ConnectHandler {\n     case .success(let channel):\n       guard context.channel.isActive else {\n         self.log?.trace("backend - frontend channel closed, closing backend connection")\n-        context.channel.close(promise: nil)\n+        channel.close(promise: nil)\n         return\n       }`
+      }
+    },
+    references: [
+      {
+        title: "Apple Container Issue #2261: File descriptors not released immediately when peer disconnects",
+        url: "https://github.com/apple/container/issues/2261"
+      },
+      {
+        title: "Apple Container PR #2260: Close backend channel immediately if frontend closes",
+        url: "https://github.com/apple/container/pull/2260"
+      },
+      {
+        title: "Apple Commit 56b95bc by egernst",
+        url: "https://github.com/apple/container/commit/56b95bc49140f0f54478d876213bd34357b91220"
+      },
+      {
+        title: "CWE-775: Missing Release of File Descriptor or Handle after Effective Lifetime",
+        url: "https://cwe.mitre.org/data/definitions/775.html"
+      }
+    ]
+  },
+  {
     slug: "ghsa-x3cj-mm38-329g",
     title: "Self-Referential Composite Action Executes Long-Lived PAT on Scheduled Runs",
     summary:

@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
 import { getAllPosts, getPostBySlug } from "@/data/posts";
+import { SITE_URL } from "@/data/seo";
 import {
   ArrowLeft,
   ExternalLink,
@@ -38,14 +40,42 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const postKeywords = [
+    post.title,
+    post.category,
+    ...(post.advisoryId ? [post.advisoryId] : []),
+    ...(post.targetRepo ? [post.targetRepo] : []),
+    ...(post.cwe || []),
+    ...post.tags,
+    "Madhan Alagarsamy",
+    "MADHAN A",
+    "Cybersecurity Research",
+    "Vulnerability Disclosure",
+    "Exploitation Analysis"
+  ];
+
   return {
     title: `${post.title} — Madhan Alagarsamy`,
     description: post.summary,
+    keywords: postKeywords,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
     openGraph: {
       title: `${post.title} — Madhan Alagarsamy`,
       description: post.summary,
+      url: `${SITE_URL}/blog/${post.slug}`,
       type: "article",
       publishedTime: post.publishedDate,
+      authors: ["Madhan Alagarsamy"],
+      tags: post.tags,
+      siteName: "Madhan Alagarsamy Portfolio & Research",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} — Madhan Alagarsamy`,
+      description: post.summary,
+      creator: "@madhanalagarsamy",
     },
   };
 }
@@ -58,8 +88,60 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: post.title,
+    description: post.summary,
+    url: `${SITE_URL}/blog/${post.slug}`,
+    datePublished: post.publishedDate,
+    dateModified: post.publishedDate,
+    author: {
+      "@type": "Person",
+      name: "Madhan Alagarsamy",
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Madhan Alagarsamy",
+      url: SITE_URL,
+    },
+    keywords: post.tags.join(", "),
+    articleSection: post.category,
+    about: [
+      post.advisoryId ? { "@type": "Thing", name: post.advisoryId } : null,
+      post.targetRepo ? { "@type": "SoftwareApplication", name: post.targetRepo } : null,
+    ].filter(Boolean),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Research Blog",
+        item: `${SITE_URL}/blog`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: `${SITE_URL}/blog/${post.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="relative min-h-screen bg-black text-white selection:bg-white selection:text-black">
+      <JsonLd data={[articleSchema, breadcrumbSchema]} />
       {/* Background ambient lighting */}
       <div className="fixed inset-0 bg-[radial-gradient(#1a1a1a_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none" />
       <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-emerald-500/5 blur-[130px] pointer-events-none" />

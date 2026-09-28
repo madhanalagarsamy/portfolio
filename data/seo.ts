@@ -61,6 +61,11 @@ export const SEO_CONFIG = {
     "BigBlueButton IDOR Vulnerability",
     "gouef/githubtoplanguages shell injection",
     "gouef/githubtoplanguages PAT theft",
+    "OpenAI Agent Medicare Bypass",
+    "OpenAI Agent Access Control Bypass",
+    "Autonomous AI Agent Security",
+    "Agentic Web Exploitation",
+    "AI Agent Sandbox Escape",
 
     // Technical Domains & Methodologies
     "Application Security (AppSec)",

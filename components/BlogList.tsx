@@ -165,6 +165,22 @@ export default function BlogList({ posts }: BlogListProps) {
                   </p>
                 )}
 
+                {/* Cover Image Preview */}
+                {post.coverImage && (
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="block relative w-full h-44 sm:h-56 md:h-64 rounded-xl overflow-hidden mb-4 border border-white/10 bg-neutral-950 group/img shadow-lg"
+                  >
+                    <img
+                      src={post.coverImage}
+                      alt={post.title}
+                      className="w-full h-full object-cover transform group-hover/img:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  </Link>
+                )}
+
                 {/* Summary */}
                 <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed mb-5">
                   {post.summary}

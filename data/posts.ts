@@ -27,6 +27,7 @@ export interface BlogPost {
   readTime: string;
   category: "Security Advisory" | "Research" | "Guide" | "Analysis";
   tags: string[];
+  coverImage?: string;
   advisoryId?: string;
   targetRepo?: string;
   severity?: "Low" | "Moderate" | "High" | "Critical";
@@ -158,6 +159,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "9 min read",
     category: "Security Advisory",
     tags: ["Apple", "Swift NIO", "DoS", "Resource Leak", "CWE-400", "CWE-775", "Networking", "Disclosure"],
+    coverImage: "/images/apple-container-fd-leak.jpg",
     advisoryId: "apple/container#2261",
     targetRepo: "apple / container",
     severity: "High",

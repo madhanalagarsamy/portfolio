@@ -77,12 +77,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       authors: ["Madhan Alagarsamy"],
       tags: post.tags,
       siteName: "Security Research Blog & Advisories — Madhan Alagarsamy",
+      ...(post.coverImage
+        ? {
+            images: [
+              {
+                url: `${SITE_URL}${post.coverImage}`,
+                width: 1200,
+                height: 675,
+                alt: post.title,
+              },
+            ],
+          }
+        : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: `${post.title} — Security Research Blog & Advisories | Madhan Alagarsamy`,
       description: post.summary,
       creator: "@madhanalagarsamy",
+      ...(post.coverImage ? { images: [`${SITE_URL}${post.coverImage}`] } : {}),
     },
   };
 }
@@ -101,6 +114,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     headline: post.title,
     description: post.summary,
     url: `${SITE_URL}/blog/${post.slug}`,
+    ...(post.coverImage ? { image: `${SITE_URL}${post.coverImage}` } : {}),
     datePublished: post.publishedDate,
     dateModified: post.publishedDate,
     author: {
@@ -263,6 +277,19 @@ export default async function BlogPostPage({ params }: PageProps) {
               )}
             </div>
           </header>
+
+          {/* Hero / Cover Image */}
+          {post.coverImage && (
+            <div className="relative w-full rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-neutral-950 shadow-2xl shadow-emerald-500/5 mb-8 sm:mb-12 group">
+              <img
+                src={post.coverImage}
+                alt={post.title}
+                className="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-500"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+            </div>
+          )}
 
           {/* Article Body */}
           <article className="space-y-8 sm:space-y-12">

@@ -272,7 +272,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <Shield size={14} className="shrink-0" />
                 <span>EXECUTIVE SUMMARY</span>
               </h2>
-              <p className="text-xs sm:text-sm md:text-base text-neutral-200 font-light leading-relaxed break-words">
+              <p className="text-xs sm:text-sm md:text-base text-neutral-200 font-light leading-relaxed break-words whitespace-pre-line">
                 {post.overview}
               </p>
             </section>
@@ -309,7 +309,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <span className="text-neutral-500 font-light text-sm sm:text-base shrink-0 mt-0.5">0{idx + 1}.</span>
                   <span className="flex-1 min-w-0">{sec.heading}</span>
                 </h2>
-                <p className="text-xs sm:text-sm md:text-base text-neutral-300 font-light leading-relaxed break-words">
+                <p className="text-xs sm:text-sm md:text-base text-neutral-300 font-light leading-relaxed break-words whitespace-pre-line">
                   {sec.description}
                 </p>
 
@@ -372,7 +372,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               <h2 className="text-base sm:text-lg md:text-xl font-bold font-mono text-white break-words">
                 IMPACT & BLAST RADIUS
               </h2>
-              <div className="p-4 sm:p-5 rounded-xl bg-white/[0.02] border border-white/10 text-xs sm:text-sm md:text-base text-neutral-300 font-light leading-relaxed break-words">
+              <div className="p-4 sm:p-5 rounded-xl bg-white/[0.02] border border-white/10 text-xs sm:text-sm md:text-base text-neutral-300 font-light leading-relaxed break-words whitespace-pre-line">
                 {post.impact}
               </div>
             </section>
@@ -382,7 +382,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               <h2 className="text-base sm:text-lg md:text-xl font-bold font-mono text-white break-words">
                 REMEDIATION & MITIGATION
               </h2>
-              <div className="p-4 sm:p-5 rounded-xl bg-emerald-500/[0.03] border border-emerald-500/20 text-xs sm:text-sm md:text-base text-neutral-300 font-light leading-relaxed break-words">
+              <div className="p-4 sm:p-5 rounded-xl bg-emerald-500/[0.03] border border-emerald-500/20 text-xs sm:text-sm md:text-base text-neutral-300 font-light leading-relaxed break-words whitespace-pre-line">
                 {post.remediation}
               </div>
 

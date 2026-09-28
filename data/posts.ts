@@ -71,6 +71,7 @@ export const blogPosts: BlogPost[] = [
       "Incident Analysis",
       "Government Security"
     ],
+    coverImage: "/images/openai-agent-medicare-bypass.jpg",
     advisoryId: "THREAT BRIEF · SERVICES AUSTRALIA INCIDENT",
     targetRepo: "Services Australia / OpenAI Research Taskforce",
     severity: "High",
@@ -251,6 +252,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 min read",
     category: "Security Advisory",
     tags: ["CI/CD Security", "GitHub Actions", "Supply Chain", "PAT Theft", "CWE-829", "Persistence", "Disclosure"],
+    coverImage: "/images/ghsa-x3cj-pat-leak.jpg",
     advisoryId: "GHSA-x3cj-mm38-329g",
     targetRepo: "gouef / githubtoplanguages",
     severity: "Critical",
@@ -335,6 +337,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "7 min read",
     category: "Security Advisory",
     tags: ["Command Injection", "RCE", "GitHub Actions", "CI/CD Security", "CWE-78", "Supply Chain", "Disclosure"],
+    coverImage: "/images/ghsa-8rfq-shell-injection.jpg",
     advisoryId: "GHSA-8rfq-rmx4-8qhr",
     targetRepo: "gouef / githubtoplanguages",
     severity: "Critical",
@@ -422,6 +425,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "6 min read",
     category: "Security Advisory",
     tags: ["IDOR", "Access Control", "CWE-639", "CWE-862", "BigBlueButton", "Disclosure"],
+    coverImage: "/images/ghsa-9v52-bbb-idor.jpg",
     advisoryId: "GHSA-9v52-vhvw-4w5c",
     targetRepo: "bigbluebutton / bigbluebutton",
     severity: "Moderate",
@@ -501,6 +505,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "5 min read",
     category: "Security Advisory",
     tags: ["CI/CD Security", "GitHub Actions", "Supply Chain", "Workflow Security", "Disclosure"],
+    coverImage: "/images/ghsa-r3jq-comment-spoof.jpg",
     advisoryId: "GHSA-r3jq-vxqh-pgrg",
     targetRepo: "bigbluebutton / bigbluebutton",
     severity: "Moderate",
@@ -564,6 +569,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 min read",
     category: "Guide",
     tags: ["VAPT", "AppSec", "Methodology", "Offensive Security", "CVD"],
+    coverImage: "/images/vapt-security-guide.jpg",
     overview:
       "Modern web applications are distributed, asynchronous systems connecting SPAs, microservices, GraphQL gateways, and cloud worker pipelines. Effective vulnerability assessments require more than running automated scanners; they demand systematic business-logic testing and responsible disclosure discipline.",
     vulnerabilityDetails: [

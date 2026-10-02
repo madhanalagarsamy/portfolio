@@ -50,11 +50,11 @@ export default function Home() {
           <main className="space-y-0">
             <Hero />
             <About />
-            <Experience />
-            <SecurityResearch />
             <SecurityAdvisory />
-            <Skills />
+            <SecurityResearch />
             <FeaturedProject />
+            <Skills />
+            <Experience />
             <Education />
             <Contact />
           </main>

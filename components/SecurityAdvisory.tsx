@@ -3,176 +3,178 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { advisoryData } from "@/data/advisory";
-import { ExternalLink, CheckCircle2, ArrowRight } from "lucide-react";
+import { ExternalLink, ArrowRight, ShieldCheck, Check } from "lucide-react";
 
 export default function SecurityAdvisory() {
   return (
-    <section id="advisory" className="relative py-28 px-6 md:px-12 z-10 select-none">
-      {/* Ultra-Light Transparent Overlay */}
-      <div className="absolute inset-0 bg-black/5 pointer-events-none" />
-
-      <div className="relative z-10 max-w-5xl mx-auto">
+    <section id="advisory" className="relative py-24 sm:py-32 px-6 sm:px-10 md:px-14 lg:px-20 z-10 border-t border-white/10 bg-black">
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5 }}
+          className="mb-14 sm:mb-18 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10"
         >
           <div>
             <div className="flex items-center space-x-3 mb-3">
-              <span className="text-xs font-mono text-neutral-400 tracking-widest uppercase">04 / SECURITY ADVISORY</span>
-              <span className="w-12 h-[1px] bg-neutral-700" />
+              <span className="w-1.5 h-1.5 bg-emerald-400" />
+              <span className="text-xs font-mono text-neutral-400 tracking-widest uppercase">
+                02 // VERIFIED DISCLOSURES
+              </span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-3">
-              VERIFIED SECURITY RESEARCH ADVISORIES
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+              SECURITY ADVISORIES &amp;<br />
+              COORDINATED DISCLOSURES
             </h2>
-            <p className="text-neutral-400 font-light text-base max-w-2xl">
-              Official security advisory documentation published on GitHub Security Advisory Database for open-source software ecosystems.
+            <p className="mt-4 text-neutral-400 font-light text-sm sm:text-base max-w-2xl leading-relaxed">
+              Official vulnerability disclosures and vendor patches published across GitHub Security Advisories and Apple open-source repositories.
             </p>
           </div>
 
-          <Link
-            href="/blog"
-            className="inline-flex items-center space-x-2 text-xs font-mono text-emerald-400 hover:text-emerald-300 tracking-wider transition-colors shrink-0"
-            title="Security Research Blog & Advisories — Madhan Alagarsamy"
-          >
-            <span>SECURITY RESEARCH BLOG & ADVISORIES</span>
-            <ArrowRight size={14} />
-          </Link>
+          <div className="shrink-0 flex items-center space-x-4 text-xs font-mono">
+            <span className="text-neutral-500">TOTAL LOGGED:</span>
+            <span className="px-2.5 py-1 bg-white/5 border border-white/10 text-white font-semibold">
+              5 DISCLOSURES
+            </span>
+          </div>
         </motion.div>
 
-        {/* Advisories Stack */}
-        <div className="space-y-10 mb-20">
-          {advisoryData.advisories.map((advisory, idx) => (
-            <motion.div
-              key={advisory.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, delay: idx * 0.15 }}
-              className="bg-black/10 border border-white/10 rounded-2xl p-5 sm:p-8 md:p-10 backdrop-blur-xs relative overflow-hidden hover:border-emerald-500/40 hover:shadow-[0_0_40px_rgba(16,185,129,0.12)] transition-all duration-500 group"
-            >
-              {/* Subtle Ambient Glow */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />
+        {/* Advisories Technical Dossier Stack */}
+        <div className="space-y-6 mb-16">
+          {advisoryData.advisories.map((advisory, idx) => {
+            const isCritical = advisory.severity?.toLowerCase() === "critical";
+            const isHigh = advisory.severity?.toLowerCase() === "high";
 
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-5 pb-5 border-b border-white/10">
-                <div className="flex items-center space-x-2.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                  <span className="text-[11px] sm:text-xs font-mono text-emerald-400 font-medium tracking-wider sm:tracking-widest uppercase">
-                    {advisory.badge}
-                  </span>
-                </div>
-
-                <span className="text-[11px] sm:text-xs font-mono text-neutral-400 break-all">
-                  TARGET REPO: <span className="text-white font-medium">{advisory.targetRepo}</span>
-                </span>
-              </div>
-
-              <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 mb-6">
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-wrap items-center gap-2 mb-3">
-                    <h3 className="text-xl sm:text-2xl md:text-4xl font-mono font-extrabold text-white tracking-wide break-all sm:break-normal">
+            return (
+              <motion.article
+                key={advisory.id}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="bg-neutral-950 border border-white/10 hover:border-white/30 transition-colors p-6 sm:p-8 md:p-10 relative"
+              >
+                {/* Header Row: ID, Badges, Target Repo */}
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-white/10 text-xs font-mono">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                    <span className="text-base sm:text-lg font-bold text-white tracking-wide">
                       {advisory.id}
-                    </h3>
+                    </span>
+
                     {advisory.severity && (
                       <span
-                        className={`px-2.5 py-1 rounded font-mono text-xs uppercase ${
-                          advisory.severity.toLowerCase() === "critical"
-                            ? "bg-rose-500/15 border border-rose-500/40 text-rose-300 font-bold shadow-[0_0_12px_rgba(244,63,94,0.25)]"
-                            : advisory.severity.toLowerCase() === "high"
-                            ? "bg-orange-500/15 border border-orange-500/40 text-orange-300 font-semibold"
-                            : "bg-amber-500/10 border border-amber-500/30 text-amber-300 font-medium"
+                        className={`px-2 py-0.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider ${
+                          isCritical
+                            ? "bg-rose-500/10 border border-rose-500/30 text-rose-300"
+                            : isHigh
+                            ? "bg-amber-500/10 border border-amber-500/30 text-amber-300"
+                            : "bg-emerald-500/10 border border-emerald-500/30 text-emerald-300"
                         }`}
                       >
                         {advisory.severity}
                       </span>
                     )}
-                  </div>
-                  <p className="text-base md:text-lg text-neutral-200 font-medium font-mono mb-4 leading-snug">
-                    {advisory.title}
-                  </p>
 
-                  {/* Metadata Chips: CWE & Patched versions */}
-                  <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-neutral-400">
-                    {advisory.cwe?.map((cweItem) => (
-                      <span key={cweItem} className="px-2.5 py-1 rounded bg-white/[0.05] border border-white/10 text-neutral-300">
-                        {cweItem}
-                      </span>
-                    ))}
-                    {advisory.patchedVersions && advisory.patchedVersions.length > 0 && (
-                      <span className="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">
-                        PATCHED: {advisory.patchedVersions.join(", ")}
-                      </span>
-                    )}
-                    {advisory.publishedDate && (
-                      <span className="px-2.5 py-1 rounded bg-white/[0.03] border border-white/5 text-neutral-400">
-                        PUBLISHED: {advisory.publishedDate}
-                      </span>
-                    )}
+                    <span className="text-neutral-500 hidden sm:inline">|</span>
+                    <span className="text-emerald-400 font-medium">
+                      {advisory.badge}
+                    </span>
+                  </div>
+
+                  <div className="text-neutral-400 text-xs font-mono">
+                    <span className="text-neutral-600">TARGET: </span>
+                    <span className="text-neutral-200">{advisory.targetRepo}</span>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-3 mt-2 lg:mt-0 shrink-0">
-                  <Link
-                    href={`/blog/${advisory.slug || advisory.id.toLowerCase()}`}
-                    className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono text-xs tracking-wider uppercase font-semibold hover:bg-emerald-500/25 transition-all duration-300 shadow-lg shadow-emerald-500/5 hover:scale-[1.02] active:scale-[0.98]"
-                  >
-                    <span>READ WRITEUP</span>
-                    <ArrowRight size={13} />
-                  </Link>
+                {/* Advisory Title */}
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold font-mono text-white mb-4 leading-snug">
+                  {advisory.title}
+                </h3>
 
-                  <a
-                    href={advisory.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-full bg-white text-black font-mono text-xs tracking-wider uppercase font-semibold hover:bg-neutral-200 transition-all duration-300 shadow-lg shadow-white/5 hover:scale-[1.02] active:scale-[0.98]"
-                  >
-                    <span>{advisory.id.startsWith("GHSA") ? "GHSA" : "VIEW ISSUE"}</span>
-                    <ExternalLink size={13} />
-                  </a>
+                {/* Synopsis */}
+                <p className="text-neutral-300 font-light text-sm sm:text-base leading-relaxed mb-6">
+                  {advisory.description}
+                </p>
+
+                {/* Technical Meta Chips */}
+                <div className="flex flex-wrap items-center gap-2 mb-8 text-xs font-mono">
+                  {advisory.cwe?.map((cweItem) => (
+                    <span
+                      key={cweItem}
+                      className="px-2 py-1 bg-white/[0.04] border border-white/10 text-neutral-300"
+                    >
+                      {cweItem}
+                    </span>
+                  ))}
+                  {advisory.patchedVersions && (
+                    <span className="px-2 py-1 bg-emerald-500/5 border border-emerald-500/20 text-emerald-300">
+                      PATCHED: {advisory.patchedVersions.join(", ")}
+                    </span>
+                  )}
+                  {advisory.publishedDate && (
+                    <span className="px-2 py-1 bg-white/[0.02] border border-white/5 text-neutral-400">
+                      DATE: {advisory.publishedDate}
+                    </span>
+                  )}
                 </div>
-              </div>
 
-              <p className="text-neutral-300 font-light text-sm md:text-base leading-relaxed pt-4 border-t border-white/10">
-                {advisory.description}
-              </p>
-            </motion.div>
-          ))}
+                {/* Direct Action Links */}
+                <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
+                  <div className="flex flex-wrap items-center gap-4">
+                    <Link
+                      href={`/blog/${advisory.slug || advisory.id.toLowerCase()}`}
+                      className="inline-flex items-center space-x-2 text-white hover:text-emerald-400 transition-colors font-semibold group"
+                    >
+                      <span>READ TECHNICAL WRITEUP &amp; PoC</span>
+                      <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                    </Link>
+
+                    <span className="text-neutral-700 hidden sm:inline">/</span>
+
+                    <a
+                      href={advisory.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-1.5 text-neutral-400 hover:text-white transition-colors"
+                    >
+                      <span>{advisory.id.startsWith("GHSA") ? "OFFICIAL GITHUB ADVISORY" : "APPLE REPO ISSUE #2261"}</span>
+                      <ExternalLink size={12} />
+                    </a>
+                  </div>
+
+                  <span className="text-[11px] text-neutral-600 hidden md:inline">
+                    STATUS: VERIFIED &amp; REMEDIATED
+                  </span>
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
 
-        {/* Responsible Disclosure Process Pipeline */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-        >
-          <h4 className="text-xs font-mono tracking-widest text-neutral-400 uppercase mb-8 text-center md:text-left">
-            RESPONSIBLE DISCLOSURE NARRATIVE PIPELINE
-          </h4>
+        {/* Responsible Disclosure Protocol Pipeline */}
+        <div className="border border-white/10 bg-neutral-950 p-6 sm:p-8">
+          <div className="flex items-center space-x-2 mb-6 pb-3 border-b border-white/10 text-xs font-mono text-neutral-400 uppercase tracking-widest">
+            <ShieldCheck size={14} className="text-emerald-400" />
+            <span>COORDINATED DISCLOSURE LIFECYCLE</span>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {advisoryData.process.map((item) => (
-              <div
-                key={item.step}
-                className="bg-white/[0.02] border border-white/10 rounded-xl p-6 backdrop-blur-md hover:bg-white/[0.04] transition-colors"
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-mono text-neutral-500 font-bold">{item.step}</span>
-                  <CheckCircle2 size={15} className="text-neutral-400" />
+              <div key={item.step} className="space-y-1.5 text-xs font-mono">
+                <div className="flex items-center space-x-2">
+                  <span className="text-emerald-400 font-bold">{item.step}</span>
+                  <span className="text-white font-semibold">{item.label}</span>
                 </div>
-                <div className="text-xs font-mono font-semibold text-white tracking-wider mb-2">
-                  {item.label}
-                </div>
-                <p className="text-xs text-neutral-400 font-light leading-relaxed">
+                <p className="text-neutral-400 font-sans font-light text-[13px] leading-relaxed">
                   {item.desc}
                 </p>
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

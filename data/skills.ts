@@ -5,23 +5,23 @@ export interface SkillCategory {
 
 export const skillsData: SkillCategory[] = [
   {
-    title: "PROGRAMMING LANGUAGES & CORE",
-    skills: ["Python", "TypeScript", "C++", "HTML/CSS", "JavaScript"]
+    title: "PROGRAMMING LANGUAGES & SYSTEMS",
+    skills: ["Python", "TypeScript", "C++", "JavaScript", "Bash / Shell", "HTML5 / CSS3"]
   },
   {
-    title: "VIBE CODING & AI TOOLS",
-    skills: ["Claude Code", "Google Antigravity", "Codex", "AI-Assisted Prototyping", "Workflow Automation"]
+    title: "VULNERABILITY RESEARCH & APPSEC",
+    skills: ["Secure Code Review", "Flaw Identification", "VAPT", "Coordinated Disclosure", "Threat Modeling", "Supply Chain Security"]
   },
   {
-    title: "WEB & APPLICATION DEVELOPMENT",
-    skills: ["Full-Stack Development", "Backend Engineering", "Application Deployment"]
+    title: "BACKEND & DISTRIBUTED SYSTEMS",
+    skills: ["High-Concurrency Architecture", "REST & WebSockets", "Swift-NIO", "Microservices", "Production Deployment"]
   },
   {
-    title: "CYBERSECURITY & RESEARCH",
-    skills: ["Secure Code Review", "Threat & Flaw Identification", "Vulnerability Assessment"]
+    title: "DEVSECOPS & INFRASTRUCTURE",
+    skills: ["CI/CD Pipeline Security", "GitHub Actions Hardening", "Docker", "Linux Kernel / POSIX", "Git"]
   },
   {
-    title: "FRAMEWORKS & TOOLS",
-    skills: ["PyTorch", "TensorFlow", "Keras", "SQLite", "OpenCV", "Git/GitHub", "CI/CD Workflows"]
+    title: "FRAMEWORKS, ML & PROTOCOLS",
+    skills: ["PyTorch", "TensorFlow", "Keras", "WebAssembly (WASM)", "OpenCV", "SQLite", "Fountain Codes (Luby Transform)"]
   }
 ];

@@ -14,5 +14,5 @@ export const profileData = {
   github: "https://github.com/madhanalagarsamy",
   githubDisplay: "github.com/madhanalagarsamy",
   githubUsername: "madhanalagarsamy",
-  summary: "Independent Cybersecurity Researcher, Developer and Founder of Net Corporation with comprehensive expertise spanning full-stack web application development, deployment, and secure architecture. Currently pursuing an MCA, combining strong academic foundations with end-to-end execution capabilities from frontend design and backend engineering to production deployment and vulnerability assessment. Proven track record in building high-concurrency systems, managing technical roadmaps, and delivering scalable enterprise solutions."
+  summary: "Independent cybersecurity researcher and developer based in Hosur, Tamil Nadu. Specializes in vulnerability discovery across open-source runtimes, CI/CD supply chains, and web applications—with disclosures recognized by Apple and published as GitHub Security Advisories. Founder of Net Corporation, architecting full-stack web applications and distributed backend systems. Currently pursuing an MCA."
 };

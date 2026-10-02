@@ -10,6 +10,11 @@ export default function CinematicVideo() {
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
+    // Respect accessibility reduced-motion preference without synchronous state mutation
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     const v1 = video1Ref.current;
     const v2 = video2Ref.current;
 
@@ -85,7 +90,7 @@ export default function CinematicVideo() {
           preload="auto"
           onEnded={handleVideo1Ended}
           onError={() => setHasError(true)}
-          className={`absolute inset-0 w-full h-full min-w-full min-h-full object-cover object-[50%_20%] md:object-[75%_center] transition-opacity duration-700 ${
+          className={`absolute inset-0 w-full h-full min-w-full min-h-full object-cover object-[50%_20%] md:object-[75%_center] transition-opacity duration-700 motion-reduce:hidden ${
             activeVideo === 1 ? "opacity-100 z-10" : "opacity-0 z-0"
           }`}
           style={{ transform: "translateZ(0)" }}
@@ -102,17 +107,18 @@ export default function CinematicVideo() {
           preload="auto"
           onEnded={handleVideo2Ended}
           onError={() => setHasError(true)}
-          className={`absolute inset-0 w-full h-full min-w-full min-h-full object-cover object-[50%_20%] md:object-[75%_center] transition-opacity duration-700 ${
+          className={`absolute inset-0 w-full h-full min-w-full min-h-full object-cover object-[50%_20%] md:object-[75%_center] transition-opacity duration-700 motion-reduce:hidden ${
             activeVideo === 2 ? "opacity-100 z-10" : "opacity-0 z-0"
           }`}
           style={{ transform: "translateZ(0)" }}
         />
       )}
 
-      {/* Fallback dark ambient backdrop */}
-      {hasError && (
+      {/* Fallback dark ambient backdrop (shown on error or when reduced-motion is requested) */}
+      {(hasError) && (
         <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 via-black to-neutral-950 z-10" />
       )}
+      <div className="hidden motion-reduce:block absolute inset-0 bg-gradient-to-b from-neutral-950 via-black to-neutral-950 z-10" />
 
       {/* Ultra-Light Minimal Transparent Overlays - Maximum Crisp Video Clarity */}
       <div className="absolute inset-0 bg-black/5 pointer-events-none z-20" />

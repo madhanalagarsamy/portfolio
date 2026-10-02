@@ -6,7 +6,7 @@ import BlogList from "@/components/BlogList";
 import JsonLd from "@/components/JsonLd";
 import { getAllPosts } from "@/data/posts";
 import { SITE_URL, SEO_CONFIG } from "@/data/seo";
-import { ArrowLeft, Terminal, Shield } from "lucide-react";
+import { ArrowLeft, Shield } from "lucide-react";
 
 export const metadata: Metadata = {
   title: {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: SEO_CONFIG.blogTitle,
     description: SEO_CONFIG.blogDescription,
     url: `${SITE_URL}/blog`,
-    siteName: "Security Research Blog & Advisories — Madhan Alagarsamy",
+    siteName: "Madhan Alagarsamy — Security Research & Advisories",
     locale: "en_US",
     type: "website",
   },
@@ -39,17 +39,8 @@ export default function BlogPage() {
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "Security Research Blog & Advisories — Madhan Alagarsamy",
-    alternateName: [
-      "Madhan Alagarsamy Blog",
-      "madhan alagarsamy blog",
-      "Security Research Blog & Advisories",
-      "Madhan Alagarsamy Security Blog",
-      "Madhan Alagarsamy Research Blog",
-      "MADHAN A Blog",
-      "Madhan Alagarsamy Technical Blog",
-    ],
-    headline: "Security Research Blog & Advisories — Madhan Alagarsamy",
+    name: "Madhan Alagarsamy — Security Research & Advisories",
+    headline: "Security Research & Advisories by Madhan Alagarsamy",
     description: SEO_CONFIG.blogDescription,
     url: `${SITE_URL}/blog`,
     inLanguage: "en-US",
@@ -94,7 +85,7 @@ export default function BlogPage() {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Security Research Blog & Advisories",
+        name: "Security Research & Advisories",
         item: `${SITE_URL}/blog`,
       },
     ],
@@ -104,49 +95,37 @@ export default function BlogPage() {
     <div className="relative min-h-screen bg-black text-white selection:bg-white selection:text-black">
       <JsonLd data={[blogSchema, breadcrumbSchema]} />
 
-      {/* Ambient background grid & glow */}
-      <div className="fixed inset-0 bg-[radial-gradient(#1a1a1a_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none" />
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-emerald-500/5 blur-[120px] pointer-events-none" />
+      {/* Subtle fine technical grid */}
+      <div className="fixed inset-0 bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none" />
 
       <div className="relative z-10">
         <Navigation />
 
-        <main className="max-w-5xl mx-auto px-4 sm:px-6 md:px-12 pt-24 sm:pt-32 pb-16 sm:pb-24">
+        <main className="max-w-5xl mx-auto px-5 sm:px-8 md:px-12 pt-28 sm:pt-36 pb-20 sm:pb-28">
           {/* Back link */}
-          <div className="mb-6 sm:mb-8">
+          <div className="mb-8">
             <Link
               href="/"
-              className="inline-flex items-center space-x-2 text-[11px] sm:text-xs font-mono text-neutral-400 hover:text-white transition-colors"
+              className="inline-flex items-center space-x-2 text-xs font-mono text-neutral-400 hover:text-white transition-colors group"
             >
-              <ArrowLeft size={13} className="shrink-0" />
-              <span>RETURN TO MAIN PORTFOLIO</span>
+              <ArrowLeft size={14} className="shrink-0 group-hover:-translate-x-1 transition-transform" />
+              <span>RETURN TO PORTFOLIO</span>
             </Link>
           </div>
 
-          {/* Page Header */}
-          <header className="mb-10 sm:mb-14 pb-6 sm:pb-8 border-b border-white/10">
-            <div className="flex flex-wrap items-center gap-2 text-[11px] sm:text-xs font-mono text-emerald-400 mb-3 tracking-wider uppercase">
-              <span className="flex items-center space-x-1.5">
-                <Terminal size={13} className="shrink-0" />
-                <span>~/MADHAN-A/SECURITY-RESEARCH</span>
-              </span>
-              <span className="text-neutral-600 hidden xs:inline">|</span>
-              <span className="text-neutral-400 flex items-center space-x-1">
-                <Shield size={12} className="text-emerald-400 shrink-0" />
-                <span>ADVISORIES & RESEARCH WRITELOG</span>
-              </span>
+          {/* Clean Editorial Header */}
+          <header className="mb-12 pb-8 border-b border-white/10">
+            <div className="flex items-center space-x-2.5 font-mono text-xs text-emerald-400 mb-4 tracking-widest uppercase">
+              <span className="w-1.5 h-1.5 bg-emerald-400 shrink-0" />
+              <span>COORDINATED VULNERABILITY DISCLOSURES &amp; ADVISORIES</span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold font-mono tracking-tight text-white mb-2 break-words">
-              SECURITY RESEARCH BLOG & ADVISORIES
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-mono tracking-tight text-white mb-3">
+              SECURITY RESEARCH & ADVISORIES
             </h1>
 
-            <p className="text-emerald-400 font-mono text-xs sm:text-sm tracking-wider uppercase mb-3 sm:mb-4 font-semibold break-words">
-              Madhan Alagarsamy — Cybersecurity Research, Vulnerability Disclosures & Technical Writeups
-            </p>
-
-            <p className="text-neutral-400 text-xs sm:text-sm md:text-base font-light max-w-3xl leading-relaxed">
-              Official <strong>Security Research Blog &amp; Advisories</strong> (also known as <strong>Madhan Alagarsamy Blog</strong>) by independent cybersecurity researcher and developer <strong>Madhan Alagarsamy (MADHAN A)</strong>. Featuring in-depth technical writeups on discovered vulnerabilities, verified GitHub Security Advisories, Apple container patches, IDOR proofs of concept, and defensive security engineering.
+            <p className="text-neutral-400 text-sm sm:text-base font-light max-w-3xl leading-relaxed">
+              Original vulnerability research, verified GitHub Security Advisories, Apple open-source patches, and technical root-cause analyses authored by independent security researcher <strong>Madhan Alagarsamy</strong>.
             </p>
           </header>
 

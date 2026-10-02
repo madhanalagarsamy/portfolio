@@ -17,9 +17,9 @@ export const experienceData: ExperienceItem[] = [
     location: "Remote",
     category: "FOUNDER",
     responsibilities: [
-      "Architect, develop, and deploy high-concurrency web applications and custom enterprise solutions from frontend interface design to production deployment.",
-      "Direct organizational technology roadmaps, manage project delivery desks, and oversee scalable software execution.",
-      "Engineer robust backend architectures and maintain CI/CD workflows, ensuring optimal performance and seamless user experiences across digital platforms."
+      "Architect and engineer production web applications and distributed backend services from technical design through automated cloud deployment.",
+      "Direct technical architecture and system specifications across client engagements and internal software initiatives.",
+      "Implement robust CI/CD workflows, automated testing gates, and operational infrastructure for high-availability systems."
     ]
   },
   {
@@ -29,9 +29,9 @@ export const experienceData: ExperienceItem[] = [
     period: "May 2025 – Present",
     category: "RESEARCH",
     responsibilities: [
-      "Actively contribute critical bug fixes, security patches, and performance enhancements to major open-source ecosystems including PyTorch, TensorFlow, and Keras.",
-      "Conduct web application penetration testing (VAPT), vulnerability assessments, and rigorous secure code reviews to identify and mitigate critical software flaws.",
-      "Implement secure programming practices, code security desks, and defensive software structures to build resilient digital infrastructure across academic and enterprise builds."
+      "Discover, verify, and responsibly disclose vulnerabilities across open-source runtimes, CI/CD supply chains, and web applications.",
+      "Author verified security advisories (GHSA) and upstream patches—including socket descriptor leak resolution acknowledged by Apple in issue #2261.",
+      "Submit patches, bug mitigations, and performance enhancements to core open-source repositories including PyTorch, TensorFlow, and Keras."
     ]
   }
 ];

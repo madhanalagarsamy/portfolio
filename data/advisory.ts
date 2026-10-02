@@ -31,6 +31,7 @@ export const advisoryData = {
     },
     {
       id: "GHSA-x3cj-mm38-329g",
+      slug: "ghsa-x3cj-mm38-329g",
       title: "Self-Referential Composite Action Executes Long-Lived PAT on Scheduled Runs",
       targetRepo: "gouef / githubtoplanguages",
       platform: "GitHub Security Advisory",
@@ -43,6 +44,7 @@ export const advisoryData = {
     },
     {
       id: "GHSA-8rfq-rmx4-8qhr",
+      slug: "ghsa-8rfq-rmx4-8qhr",
       title: "Shell Injection via Composite Action Inputs in gouef/githubtoplanguages",
       targetRepo: "gouef / githubtoplanguages",
       platform: "GitHub Security Advisory",
@@ -55,6 +57,7 @@ export const advisoryData = {
     },
     {
       id: "GHSA-9v52-vhvw-4w5c",
+      slug: "ghsa-9v52-vhvw-4w5c",
       title: "Cross-meeting presentation upload via unbound upload token (IDOR)",
       targetRepo: "bigbluebutton / bigbluebutton",
       platform: "GitHub Security Advisory",
@@ -68,6 +71,7 @@ export const advisoryData = {
     },
     {
       id: "GHSA-r3jq-vxqh-pgrg",
+      slug: "ghsa-r3jq-vxqh-pgrg",
       title: "CI workflow comment spoofing via fork pull requests",
       targetRepo: "bigbluebutton / bigbluebutton",
       platform: "GitHub Security Advisory",
@@ -79,9 +83,9 @@ export const advisoryData = {
     }
   ],
   process: [
-    { step: "01", label: "RESEARCH", desc: "Targeted analysis of software systems & CI workflow execution flows" },
-    { step: "02", label: "DISCOVERY", desc: "Rigorous vulnerability identification & security flaw verification" },
-    { step: "03", label: "RESPONSIBLE DISCLOSURE", desc: "Coordinated vulnerability disclosure with maintainers" },
-    { step: "04", label: "SECURITY IMPACT", desc: "Collaborative patch delivery to fortify open-source ecosystem" }
+    { step: "01", label: "STATIC & RUNTIME AUDIT", desc: "Source review, taint tracking, and execution path modeling." },
+    { step: "02", label: "REPRODUCTION & PoC", desc: "Minimal standalone proof-of-concept verification across host platforms." },
+    { step: "03", label: "COORDINATED DISCLOSURE", desc: "Structured reporting to project maintainers via private advisory channels." },
+    { step: "04", label: "PATCH COLLABORATION", desc: "Assisting maintainers with fix verification, PR reviews, and advisory publication." }
   ]
 };

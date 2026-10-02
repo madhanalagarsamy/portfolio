@@ -13,11 +13,9 @@ import {
   ArrowLeft,
   ExternalLink,
   Shield,
-  ShieldAlert,
   CheckCircle2,
   Calendar,
   Clock,
-  Tag,
   AlertTriangle,
 } from "lucide-react";
 
@@ -181,30 +179,20 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           {/* Article Header */}
           <header className="mb-10 sm:mb-12 pb-6 sm:pb-10 border-b border-white/10">
-            {/* Badges / Advisory ID */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
-              <span className="px-2 py-0.5 bg-white/[0.04] border border-white/10 text-[11px] sm:text-xs font-mono text-neutral-300 uppercase">
-                {post.category}
-              </span>
+            {/* Metadata */}
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4 text-xs font-mono text-neutral-400">
+              <span className="text-neutral-300 uppercase tracking-wider">{post.category}</span>
               {post.advisoryId && (
-                <span className="inline-flex items-center space-x-1.5 px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[11px] sm:text-xs font-semibold break-all">
-                  <Shield size={12} className="shrink-0" />
-                  <span>{post.advisoryId}</span>
-                </span>
+                <>
+                  <span className="text-neutral-600">•</span>
+                  <span className="text-emerald-400 font-semibold">{post.advisoryId}</span>
+                </>
               )}
               {post.severity && (
-                <span
-                  className={`inline-flex items-center space-x-1 px-2 py-0.5 font-mono text-[10px] sm:text-xs font-medium uppercase ${
-                    post.severity.toLowerCase() === "critical"
-                      ? "bg-rose-500/10 border border-rose-500/30 text-rose-300 font-bold"
-                      : post.severity.toLowerCase() === "high"
-                      ? "bg-amber-500/10 border border-amber-500/30 text-amber-300 font-semibold"
-                      : "bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-medium"
-                  }`}
-                >
-                  <ShieldAlert size={12} className="shrink-0" />
-                  <span>SEVERITY: {post.severity}</span>
-                </span>
+                <>
+                  <span className="text-neutral-600">•</span>
+                  <span className="text-neutral-300 uppercase">SEVERITY: {post.severity}</span>
+                </>
               )}
             </div>
 
@@ -435,18 +423,6 @@ export default async function BlogPostPage({ params }: PageProps) {
               </section>
             )}
 
-            {/* Tags */}
-            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-4 border-t border-white/10">
-              <Tag size={13} className="text-neutral-500 shrink-0" />
-              {post.tags.map((t) => (
-                <span
-                  key={t}
-                  className="text-[10px] sm:text-xs font-mono text-neutral-400 bg-white/[0.02] px-2 py-0.5 border border-white/10"
-                >
-                  #{t}
-                </span>
-              ))}
-            </div>
 
             {/* Back to Blog Button */}
             <div className="pt-6 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">

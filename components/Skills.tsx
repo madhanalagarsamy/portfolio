@@ -44,7 +44,7 @@ export default function Skills() {
               {/* Category Identifier */}
               <div className="lg:col-span-4 flex items-center space-x-3">
                 <span className="text-xs font-mono text-emerald-400 font-bold shrink-0">
-                  0{idx + 1} //
+                  {`0${idx + 1} //`}
                 </span>
                 <h3 className="text-xs sm:text-sm font-mono font-semibold text-white tracking-wider uppercase">
                   {category.title}

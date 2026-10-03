@@ -252,6 +252,8 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <span>
                     {post.advisoryId?.startsWith("GHSA")
                       ? "OFFICIAL GITHUB ADVISORY"
+                      : post.githubAdvisoryUrl?.includes("/pull/")
+                      ? "OFFICIAL PR & UPSTREAM FIX"
                       : "OFFICIAL ISSUE & FIX"}
                   </span>
                   <ExternalLink size={12} className="shrink-0" />

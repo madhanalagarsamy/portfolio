@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { profileData } from "@/data/profile";
-import { Mail, Copy, Check, ArrowUpRight } from "lucide-react";
-import GithubIcon from "@/components/icons/GithubIcon";
+import { Copy, Check, ArrowUpRight } from "lucide-react";
 
 export default function Contact() {
   const [copied, setCopied] = useState<string | null>(null);

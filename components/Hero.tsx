@@ -75,7 +75,7 @@ export default function Hero() {
           className="text-sm sm:text-base md:text-lg text-neutral-300 max-w-xl mb-10 leading-relaxed font-light select-text"
         >
           Researching failure modes in open-source runtimes, CI/CD pipelines, and network handlers.
-          Vulnerability disclosures acknowledged by Apple maintainers and published under verified GitHub Security Advisories.
+          Vulnerability disclosures acknowledged by Espressif and Apple maintainers, and published under verified GitHub Security Advisories.
         </motion.p>
 
         {/* Restrained Purposeful Actions */}
@@ -96,7 +96,7 @@ export default function Hero() {
             className="inline-flex items-center justify-center space-x-2 px-5 py-3 border border-white/20 text-neutral-200 font-mono text-xs tracking-wider uppercase font-medium hover:border-emerald-400 hover:text-emerald-300 transition-colors"
           >
             <Shield size={13} className="text-emerald-400" />
-            <span>RESEARCH WRITELOG (5)</span>
+            <span>RESEARCH WRITELOG (6)</span>
           </Link>
 
           <a
@@ -121,7 +121,25 @@ export default function Hero() {
       >
         <div>
           <span className="text-neutral-500 uppercase tracking-wider block text-[10px] mb-1">
-            01 // VENDOR ACKNOWLEDGMENT
+            01 // HARDWARE &amp; RUNTIME DISCLOSURES
+          </span>
+          <a
+            href="https://github.com/esp-rs/espflash/pull/1074"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-emerald-400 transition-colors flex items-center space-x-1 group"
+          >
+            <span className="font-medium">Espressif espflash PR #1074</span>
+            <ArrowUpRight size={11} className="text-neutral-500 group-hover:text-emerald-400" />
+          </a>
+          <p className="text-neutral-400 text-[11px] font-sans mt-0.5">
+            Self-hosted HIL runner RCE acknowledged &amp; gated
+          </p>
+        </div>
+
+        <div>
+          <span className="text-neutral-500 uppercase tracking-wider block text-[10px] mb-1">
+            02 // VENDOR ACKNOWLEDGMENT
           </span>
           <a
             href="https://github.com/apple/container/issues/2261"
@@ -139,7 +157,7 @@ export default function Hero() {
 
         <div>
           <span className="text-neutral-500 uppercase tracking-wider block text-[10px] mb-1">
-            02 // PUBLISHED ADVISORIES
+            03 // PUBLISHED ADVISORIES
           </span>
           <a
             href="#advisory"
@@ -150,22 +168,6 @@ export default function Hero() {
           </a>
           <p className="text-neutral-400 text-[11px] font-sans mt-0.5">
             Command Injection (CWE-78), PAT Leakage, IDOR
-          </p>
-        </div>
-
-        <div>
-          <span className="text-neutral-500 uppercase tracking-wider block text-[10px] mb-1">
-            03 // PROTOCOL &amp; SYSTEMS
-          </span>
-          <a
-            href="#projects"
-            className="text-white hover:text-emerald-400 transition-colors flex items-center space-x-1 group"
-          >
-            <span className="font-medium">Decimal Optical Transfer</span>
-            <ArrowDown size={11} className="text-neutral-500 group-hover:text-emerald-400" />
-          </a>
-          <p className="text-neutral-400 text-[11px] font-sans mt-0.5">
-            Fountain Codes (Luby Transform) · Duo-QR Mosaic
           </p>
         </div>
       </motion.div>

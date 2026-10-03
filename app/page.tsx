@@ -29,6 +29,7 @@ export default function Home() {
       jobTitle: "Independent Cybersecurity Researcher & Software Developer",
       sameAs: [
         "https://github.com/madhanalagarsamy",
+        "https://github.com/esp-rs/espflash/pull/1074",
         "https://github.com/apple/container/issues/2261",
         "https://github.com/bigbluebutton/bigbluebutton/security/advisories/GHSA-9v52-vhvw-4w5c",
         "https://github.com/gouef/githubtoplanguages/security/advisories/GHSA-8rfq-rmx4-8qhr",

@@ -9,7 +9,7 @@ export default function SecurityResearch() {
   const domainIcons = [Terminal, Workflow, KeyRound];
   const domainLinks = [
     { label: "View Apple #2261 Analysis", href: "/blog/apple-container-connecthandler-fd-leak" },
-    { label: "View GHSA-8rfq & GHSA-x3cj", href: "/blog/ghsa-8rfq-rmx4-8qhr" },
+    { label: "View espflash Hardware RCE", href: "/blog/espflash-self-hosted-runner-hardware-rce" },
     { label: "View BigBlueButton IDOR", href: "/blog/ghsa-9v52-vhvw-4w5c" },
   ];
 

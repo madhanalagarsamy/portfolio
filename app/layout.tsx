@@ -75,6 +75,7 @@ export default function RootLayout({
     },
     sameAs: [
       "https://github.com/madhanalagarsamy",
+      "https://github.com/esp-rs/espflash/pull/1074",
       "https://github.com/apple/container/issues/2261",
       "https://github.com/bigbluebutton/bigbluebutton/security/advisories/GHSA-9v52-vhvw-4w5c",
       "https://github.com/gouef/githubtoplanguages/security/advisories/GHSA-8rfq-rmx4-8qhr",
@@ -82,6 +83,8 @@ export default function RootLayout({
     ],
     knowsAbout: [
       "Cybersecurity Research",
+      "Hardware-In-The-Loop (HIL) Security",
+      "Self-Hosted Runner Security",
       "Application Security (AppSec)",
       "Vulnerability Assessment and Penetration Testing (VAPT)",
       "Coordinated Vulnerability Disclosure (CVD)",

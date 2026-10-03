@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { advisoryData } from "@/data/advisory";
-import { ExternalLink, ArrowRight, ShieldCheck, Check } from "lucide-react";
+import { ExternalLink, ArrowRight, ShieldCheck } from "lucide-react";
 
 export default function SecurityAdvisory() {
   return (
@@ -36,7 +36,7 @@ export default function SecurityAdvisory() {
           <div className="shrink-0 flex items-center space-x-4 text-xs font-mono">
             <span className="text-neutral-500">TOTAL LOGGED:</span>
             <span className="px-2.5 py-1 bg-white/5 border border-white/10 text-white font-semibold">
-              5 DISCLOSURES
+              {advisoryData.advisories.length} DISCLOSURES
             </span>
           </div>
         </motion.div>
@@ -140,7 +140,13 @@ export default function SecurityAdvisory() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center space-x-1.5 text-neutral-400 hover:text-white transition-colors"
                     >
-                      <span>{advisory.id.startsWith("GHSA") ? "OFFICIAL GITHUB ADVISORY" : "APPLE REPO ISSUE #2261"}</span>
+                      <span>
+                        {advisory.id.startsWith("GHSA")
+                          ? "OFFICIAL GITHUB ADVISORY"
+                          : advisory.id.startsWith("apple")
+                          ? "APPLE REPO ISSUE #2261"
+                          : "ESPRESSIF / ESP-RS PR #1074"}
+                      </span>
                       <ExternalLink size={12} />
                     </a>
                   </div>

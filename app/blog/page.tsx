@@ -6,7 +6,7 @@ import BlogList from "@/components/BlogList";
 import JsonLd from "@/components/JsonLd";
 import { getAllPosts } from "@/data/posts";
 import { SITE_URL, SEO_CONFIG } from "@/data/seo";
-import { ArrowLeft, Shield } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
   title: {

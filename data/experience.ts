@@ -30,7 +30,7 @@ export const experienceData: ExperienceItem[] = [
     category: "RESEARCH",
     responsibilities: [
       "Discover, verify, and responsibly disclose vulnerabilities across open-source runtimes, CI/CD supply chains, and web applications.",
-      "Author verified security advisories (GHSA) and upstream patches—including socket descriptor leak resolution acknowledged by Apple in issue #2261.",
+      "Author verified security advisories and upstream patches—including physical self-hosted runner RCE gated in esp-rs/espflash PR #1074 and socket descriptor leak resolution acknowledged by Apple in issue #2261.",
       "Submit patches, bug mitigations, and performance enhancements to core open-source repositories including PyTorch, TensorFlow, and Keras."
     ]
   }

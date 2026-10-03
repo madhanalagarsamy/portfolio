@@ -16,13 +16,13 @@ export default function About() {
       num: "02",
       title: "COORDINATED UPSTREAM FIXES",
       icon: GitCommit,
-      desc: "Active collaboration with open-source maintainers to review root causes, assist with patch development, and verify PRs—such as Apple Container PR #2260.",
+      desc: "Active collaboration with open-source maintainers to review root causes, assist with patch development, and verify PRs—such as esp-rs/espflash PR #1074 and Apple Container PR #2260.",
     },
     {
       num: "03",
       title: "SUPPLY CHAIN & CI/CD AUDITING",
       icon: Layers,
-      desc: "Methodical analysis of GitHub Actions runner triggers, unpinned mutable composite actions, and token exfiltration vectors (GHSA-8rfq-rmx4-8qhr, GHSA-x3cj-mm38-329g).",
+      desc: "Methodical analysis of GitHub Actions runner triggers, physical self-hosted runner fleets, and unpinned composite actions across cloud and hardware test benches.",
     },
     {
       num: "04",

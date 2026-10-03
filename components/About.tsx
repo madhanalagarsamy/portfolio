@@ -22,7 +22,7 @@ export default function About() {
       num: "03",
       title: "SUPPLY CHAIN & CI/CD AUDITING",
       icon: Layers,
-      desc: "Methodical analysis of GitHub Actions runner triggers, physical self-hosted runner fleets, and unpinned composite actions across cloud and hardware test benches.",
+      desc: "Methodical analysis of GitHub Actions runner triggers, self-hosted runner fleets, and unpinned composite actions across automated CI pipelines.",
     },
     {
       num: "04",

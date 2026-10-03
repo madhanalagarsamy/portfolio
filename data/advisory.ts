@@ -17,8 +17,8 @@ export const advisoryData = {
   advisories: [
     {
       id: "esp-rs/espflash#1074",
-      slug: "espflash-self-hosted-runner-hardware-rce",
-      title: "Arbitrary Code Execution on esp-rs/espflash Self-Hosted Hardware Runners via Untrusted Fork PRs",
+      slug: "espflash-self-hosted-runner-rce",
+      title: "Arbitrary Code Execution on esp-rs/espflash Self-Hosted Runners via Untrusted Fork PRs",
       targetRepo: "esp-rs / espflash",
       platform: "Espressif / esp-rs Coordinated Disclosure & Security Fix",
       url: "https://github.com/esp-rs/espflash/pull/1074",
@@ -27,7 +27,7 @@ export const advisoryData = {
       cwe: ["CWE-284", "CWE-306"],
       patchedVersions: ["PR #1074 (HIL slash command gates & runner isolation)"],
       publishedDate: "Sep - Oct 2026",
-      description: "Discovered and responsibly reported a Critical (CVSS 10.0) security vulnerability in esp-rs/espflash where untrusted fork pull requests executed arbitrary attacker-controlled workflows on physical self-hosted Raspberry Pi & VM runners (Brno cluster) with GPIO/dialout hardware access. Officially acknowledged by maintainers and remediated in PR #1074 with slash command gates and approval policies."
+      description: "Discovered and responsibly reported a Critical (CVSS 10.0) security vulnerability in esp-rs/espflash where untrusted fork pull requests executed arbitrary attacker-controlled workflows on self-hosted runners (Brno cluster) with GPIO/dialout access. Officially acknowledged by maintainers and remediated in PR #1074 with slash command gates and approval policies."
     },
     {
       id: "apple/container#2261",

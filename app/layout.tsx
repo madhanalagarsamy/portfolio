@@ -83,8 +83,7 @@ export default function RootLayout({
     ],
     knowsAbout: [
       "Cybersecurity Research",
-      "Hardware-In-The-Loop (HIL) Security",
-      "Self-Hosted Runner Security",
+      "Self-Hosted CI Runner Security",
       "Application Security (AppSec)",
       "Vulnerability Assessment and Penetration Testing (VAPT)",
       "Coordinated Vulnerability Disclosure (CVD)",

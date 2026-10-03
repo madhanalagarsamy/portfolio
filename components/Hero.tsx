@@ -121,7 +121,7 @@ export default function Hero() {
       >
         <div>
           <span className="text-neutral-500 uppercase tracking-wider block text-[10px] mb-1">
-            01 // HARDWARE &amp; RUNTIME DISCLOSURES
+            01 // SELF-HOSTED RUNNER DISCLOSURE
           </span>
           <a
             href="https://github.com/esp-rs/espflash/pull/1074"
@@ -133,7 +133,7 @@ export default function Hero() {
             <ArrowUpRight size={11} className="text-neutral-500 group-hover:text-emerald-400" />
           </a>
           <p className="text-neutral-400 text-[11px] font-sans mt-0.5">
-            Self-hosted HIL runner RCE acknowledged &amp; gated
+            Self-hosted runner RCE acknowledged &amp; gated
           </p>
         </div>
 

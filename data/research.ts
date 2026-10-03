@@ -8,9 +8,9 @@ export const researchData = {
       description: "Auditing low-level networking handlers, event loops, and resource lifecycles. Identified socket file descriptor exhaustion DoS acknowledged by Apple maintainers in issue #2261."
     },
     {
-      title: "CI/CD & Hardware Fleet Security",
-      target: "Self-Hosted Runners · Hardware-in-the-Loop · Supply Chain",
-      description: "Analyzing automated build pipelines for untrusted fork execution on physical self-hosted runners (acknowledged in esp-rs/espflash PR #1074), shell injection (CWE-78), and PAT exfiltration (CWE-829)."
+      title: "CI/CD & Self-Hosted Runner Security",
+      target: "Self-Hosted Runners · CI/CD Security · Supply Chain",
+      description: "Analyzing automated build pipelines for untrusted fork execution on self-hosted runners (acknowledged in esp-rs/espflash PR #1074), shell injection (CWE-78), and PAT exfiltration (CWE-829)."
     },
     {
       title: "Application Security & Access Controls",

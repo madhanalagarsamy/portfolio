@@ -53,15 +53,14 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "espflash-self-hosted-runner-hardware-rce",
-    title: "Arbitrary Code Execution on esp-rs/espflash Self-Hosted Hardware Runners via Untrusted Fork Pull Requests",
+    slug: "espflash-self-hosted-runner-rce",
+    title: "Arbitrary Code Execution on esp-rs/espflash Self-Hosted Runners via Untrusted Fork Pull Requests",
     summary:
-      "A deep dive into discovering and responsibly reporting a Critical 10.0 CVSS vulnerability in esp-rs/espflash where untrusted fork pull requests executed arbitrary attacker-controlled workflows directly on Espressif's non-ephemeral physical Raspberry Pi and VM hardware runners without maintainer approval. Successfully demonstrated via non-destructive PoC (PR #1070) and mitigated in PR #1074 via HIL slash-command gates.",
+      "A deep dive into discovering and responsibly reporting a Critical 10.0 CVSS vulnerability in esp-rs/espflash where untrusted fork pull requests executed arbitrary attacker-controlled workflows directly on Espressif's non-ephemeral physical Raspberry Pi and VM self-hosted runners without maintainer approval. Successfully demonstrated via non-destructive PoC (PR #1070) and mitigated in PR #1074 via slash-command gates.",
     publishedDate: "Sep - Oct 2026",
     readTime: "10 min read",
     category: "Security Advisory",
     tags: [
-      "Hardware-In-The-Loop",
       "Self-Hosted Runners",
       "GitHub Actions",
       "CI/CD Security",
@@ -72,7 +71,7 @@ export const blogPosts: BlogPost[] = [
       "Espressif",
       "Disclosure"
     ],
-    coverImage: "/images/espflash-hardware-rce.jpg",
+    coverImage: "/images/espflash-self-hosted-runner-rce.jpg",
     advisoryId: "esp-rs/espflash#1074",
     targetRepo: "esp-rs / espflash",
     severity: "Critical",
@@ -83,19 +82,19 @@ export const blogPosts: BlogPost[] = [
     patchedVersions: ["PR #1074 (HIL slash command gates & runner isolation)"],
     githubAdvisoryUrl: "https://github.com/esp-rs/espflash/pull/1074",
     overview:
-      "The esp-rs/espflash repository maintains a non-ephemeral fleet of physical self-hosted runners (BrnoRPIRS01–BrnoRPIRS13, BrnoVMRS06) dedicated to running Hardware-In-the-Loop (HIL) tests against real connected ESP32 SoC devices. The primary automated workflow (.github/workflows/hil.yml) triggered on pull_request events against the base repository, executing on runs-on: [self-hosted, linux, ARM64, ...]. Because GitHub Actions runs workflow definitions from the pull request head (i.e., from the contributor's fork), and repository policies lacked approval requirements for fork pull-request workflows, any attacker could push arbitrary workflow commands that executed directly on Espressif's physical lab hardware without maintainer review or authorization.",
+      "The esp-rs/espflash repository maintains a non-ephemeral fleet of physical self-hosted runners (BrnoRPIRS01–BrnoRPIRS13, BrnoVMRS06) dedicated to running Hardware-In-the-Loop (HIL) tests against real connected ESP32 SoC devices. The primary automated workflow (.github/workflows/hil.yml) triggered on pull_request events against the base repository, executing on runs-on: [self-hosted, linux, ARM64, ...]. Because GitHub Actions runs workflow definitions from the pull request head (i.e., from the contributor's fork), and repository policies lacked approval requirements for fork pull-request workflows, any attacker could push arbitrary workflow commands that executed directly on Espressif's self-hosted runners without maintainer review or authorization.",
     timeline: [
       {
         date: "September 13, 2026",
-        event: "Discovered self-hosted hardware runner execution vulnerability; verified via GitHub REST API that 82 of 82 recent fork PR runs executed with zero approval gating."
+        event: "Discovered self-hosted runner execution vulnerability; verified via GitHub REST API that 82 of 82 recent fork PR runs executed with zero approval gating."
       },
       {
         date: "September 13, 2026",
-        event: "Submitted private vulnerability disclosure to esp-rs maintainers detailing unauthenticated remote code execution on the Brno hardware cluster."
+        event: "Submitted private vulnerability disclosure to esp-rs maintainers detailing unauthenticated remote code execution on the Brno self-hosted runner cluster."
       },
       {
         date: "September 13, 2026",
-        event: "Executed live, non-destructive PoC (PR #1070, run 34771920489) using a neutral provenance marker confirming unprivileged command execution on physical host CI17045-RPI."
+        event: "Executed live, non-destructive PoC (PR #1070, run 34771920489) using a neutral provenance marker confirming unprivileged command execution on self-hosted host CI17045-RPI."
       },
       {
         date: "Late September 2026",
@@ -108,9 +107,9 @@ export const blogPosts: BlogPost[] = [
     ],
     vulnerabilityDetails: [
       {
-        heading: "Hardware-In-The-Loop Fleet Architecture & Non-Ephemeral Hosts",
+        heading: "Self-Hosted Runner Fleet Architecture & Non-Ephemeral Hosts",
         description:
-          "To validate firmware flashing across diverse ESP32 SoC architectures, esp-rs/espflash maintains a physical cluster of self-hosted Raspberry Pi single-board computers (BrnoRPIRS01 through BrnoRPIRS13) and virtual machines (BrnoVMRS06) connected to actual hardware test benches. These runners are long-lived and persistent: identical hostnames and serial device nodes (/dev/serial_ports/*) were observed serving multiple workflow runs across days and weeks. Because these machines are non-ephemeral, any state alteration or planted binary persists across workflow runs.",
+          "To validate firmware flashing across diverse ESP32 SoC architectures, esp-rs/espflash maintains a self-hosted runner cluster of Raspberry Pi single-board computers (BrnoRPIRS01 through BrnoRPIRS13) and virtual machines (BrnoVMRS06). These runners are long-lived and persistent: identical hostnames and serial device nodes (/dev/serial_ports/*) were observed serving multiple workflow runs across days and weeks. Because these machines are non-ephemeral, any state alteration or planted binary persists across workflow runs.",
         codeSnippet: {
           language: "yaml",
           caption: "Vulnerable workflow trigger and runner configuration (.github/workflows/hil.yml)",
@@ -125,12 +124,12 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Execution Without Approval Gating",
         description:
-          "Public GitHub Actions run logs confirmed that the repository had not enabled the mandatory approval policy for fork pull requests ('Require approval for all outside collaborators'). An audit of the 100 most recent workflow runs revealed that 82 originated from external fork heads, and all 82 ran immediately to completion (47 success, 26 failure, 9 cancelled) with zero runs held in 'action_required'. This meant any GitHub user could fork the repository, modify the workflow file, submit a pull request, and achieve immediate arbitrary execution on Espressif's hardware runners."
+          "Public GitHub Actions run logs confirmed that the repository had not enabled the mandatory approval policy for fork pull requests ('Require approval for all outside collaborators'). An audit of the 100 most recent workflow runs revealed that 82 originated from external fork heads, and all 82 ran immediately to completion (47 success, 26 failure, 9 cancelled) with zero runs held in 'action_required'. This meant any GitHub user could fork the repository, modify the workflow file, submit a pull request, and achieve immediate arbitrary execution on Espressif's self-hosted runners."
       },
       {
         heading: "Persistence Vectors & Supply Chain Blast Radius",
         description:
-          "Because the runners operate with access to host hardware (dialout, gpio, i2c, spi, and docker groups) and persistent file systems, an adversary could execute an equivalent of the known TensorFlow self-hosted runner attack vector: registering a secondary background runner (RUNNER_TRACKING_ID=0 && nohup ./run.sh &), harvesting credentials (~/.runner, SSH agent keys), flashing compromised firmware onto attached test chips, or stealing repository tokens minted for subsequent base-branch runs."
+          "Because the runners operate with access to host devices (dialout, gpio, i2c, spi, and docker groups) and persistent file systems, an adversary could execute an equivalent of the known TensorFlow self-hosted runner attack vector: registering a secondary background runner (RUNNER_TRACKING_ID=0 && nohup ./run.sh &), harvesting credentials (~/.runner, SSH agent keys), flashing compromised firmware onto attached test chips, or stealing repository tokens minted for subsequent base-branch runs."
       }
     ],
     poc: {
@@ -140,7 +139,7 @@ export const blogPosts: BlogPost[] = [
         "Phase A (Trigger Precondition Verification): Queried GitHub Actions REST API to verify that external fork pull requests were executing on self-hosted runners without maintainer approval gates.",
         "Phase B (PoC Workflow Formulation): Forked esp-rs/espflash and added .github/workflows/poc.yml containing a benign diagnostic step printing hostname, whoami, id, uname, and runner environment variables.",
         "Phase C (Execution Trigger): Created pull request #1070 from fork branch ghsa-poc against base branch main. The workflow triggered automatically without maintainer interaction.",
-        "Phase D (Host Execution Verification): Monitored run 34771920489; verified successful execution on physical hardware runner 'CI17045-RPI' running Linux 6.12 aarch64 under user 'pi' with dialout, gpio, i2c, spi, and docker group privileges.",
+        "Phase D (Host Execution Verification): Monitored run 34771920489; verified successful execution on self-hosted runner 'CI17045-RPI' running Linux 6.12 aarch64 under user 'pi' with dialout, gpio, i2c, spi, and docker group privileges.",
         "Phase E (Blast Radius Modeling): Documented persistence channels (secondary runner registration, token exfiltration from subsequent runs) while strictly avoiding destructive testing."
       ],
       requestSnippet: {
@@ -150,12 +149,12 @@ export const blogPosts: BlogPost[] = [
       }
     },
     impact:
-      "Critical Severity (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H — 10.0 / 10). Remote unauthenticated attackers could execute arbitrary commands directly on Espressif's physical lab hardware. Attackers gained access to attached ESP32 SoC microcontrollers via serial devices (/dev/serial_ports/*), GPIO/SPI/I2C buses, and local network segments. Furthermore, planted persistence on non-ephemeral runners exposed subsequently executed release workflows (ci.yml, changelog.yml), creating an open-source supply chain tampering vector for espflash (2,200+ stars).",
+      "Critical Severity (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H — 10.0 / 10). Remote unauthenticated attackers could execute arbitrary commands directly on Espressif's self-hosted runners. Attackers gained access to attached ESP32 SoC microcontrollers via serial devices (/dev/serial_ports/*), GPIO/SPI/I2C buses, and local network segments. Furthermore, planted persistence on non-ephemeral runners exposed subsequently executed release workflows (ci.yml, changelog.yml), creating an open-source supply chain tampering vector for espflash (2,200+ stars).",
     remediation:
-      "1) Enforce repository and organization-level fork PR approval policies ('Require approval for all outside collaborators'). 2) Decouple automated fork PR triggers from physical hardware runners by gating HIL test runs behind trusted maintainer slash commands (/hil quick, /hil full, /trust). 3) Use robust repository head assertions (github.event.pull_request.head.repo.full_name == 'esp-rs/espflash') rather than base owner checks. 4) Migrate self-hosted runners toward ephemeral containerized architectures and enforce minimum GITHUB_TOKEN permissions.",
+      "1) Enforce repository and organization-level fork PR approval policies ('Require approval for all outside collaborators'). 2) Decouple automated fork PR triggers from self-hosted runners by gating workflow runs behind trusted maintainer slash commands (/hil quick, /hil full, /trust). 3) Use robust repository head assertions (github.event.pull_request.head.repo.full_name == 'esp-rs/espflash') rather than base owner checks. 4) Migrate self-hosted runners toward ephemeral containerized architectures and enforce minimum GITHUB_TOKEN permissions.",
     patchDetails: {
       description:
-        "Espressif maintainers addressed the finding in Pull Request #1074 ('Add slash commands for HIL testing'), replacing direct pull_request triggers on physical hardware with maintainer-controlled slash commands (/hil quick, /hil full, /trust user) and configuring GitHub branch approval options.",
+        "Espressif maintainers addressed the finding in Pull Request #1074 ('Add slash commands for HIL testing'), replacing direct pull_request triggers on self-hosted runners with maintainer-controlled slash commands (/hil quick, /hil full, /trust user) and configuring GitHub branch approval options.",
       codeSnippet: {
         language: "markdown",
         caption: "Slash command controls introduced in esp-rs/espflash PR #1074",

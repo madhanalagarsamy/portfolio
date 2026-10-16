@@ -1,21 +1,21 @@
 export const researchData = {
-  sectionTitle: "SECURITY RESEARCH",
-  subtitle: "OPEN-SOURCE SECURITY & DEFENSIVE ENGINEERING",
+  sectionTitle: "Security Research",
+  subtitle: "Vulnerability Discovery & Systems Analysis",
   pillars: [
     {
-      title: "Runtime & Systems Analysis",
-      target: "Apple Container · Swift-NIO · POSIX Sockets",
-      description: "Auditing low-level networking handlers, event loops, and resource lifecycles. Identified socket file descriptor exhaustion DoS acknowledged by Apple maintainers in issue #2261."
+      title: "Runtimes & Systems",
+      target: "Apple Container · Swift-NIO · Sockets",
+      description: "Low-level network handlers, event loops, and socket resource lifecycles. Identified socket FD exhaustion DoS resolved in Apple Container PR #2260."
     },
     {
-      title: "CI/CD & Self-Hosted Runner Security",
-      target: "Self-Hosted Runners · CI/CD Security · Supply Chain",
-      description: "Analyzing automated build pipelines for untrusted fork execution on self-hosted runners (acknowledged in esp-rs/espflash PR #1074), shell injection (CWE-78), and PAT exfiltration (CWE-829)."
+      title: "CI/CD & Supply Chain",
+      target: "Self-Hosted Runners · GitHub Actions",
+      description: "Untrusted fork execution on physical self-hosted runners (espflash PR #1074), command injection (CWE-78), and token exfiltration."
     },
     {
-      title: "Application Security & Access Controls",
-      target: "Web Services · Authorization Bypasses · IDOR",
-      description: "Methodical web security assessments focusing on cross-tenant data isolation, unbound upload tokens, and business logic flaws across open-source collaborative platforms."
+      title: "Web Security & Access",
+      target: "Web Services · IDOR · Access Controls",
+      description: "Authorization boundaries, unbound upload tokens, and cross-meeting presentation exposure across open-source platforms."
     }
   ]
 };

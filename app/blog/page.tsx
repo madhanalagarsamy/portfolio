@@ -112,21 +112,18 @@ export default function BlogPage() {
 
           {/* Apple Newsroom Editorial Header */}
           <header className="mb-12 pb-8 border-b border-white/[0.08]">
-            <div className="text-[#2997ff] text-xs sm:text-sm font-semibold tracking-[-0.01em] mb-3">
-              Apple Security Updates &amp; Coordinated Advisories
+            <div className="text-[#2997ff] text-xs sm:text-sm font-semibold tracking-[-0.01em] mb-2">
+              Research Writelog
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-[-0.03em] leading-tight text-white mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-[-0.03em] leading-tight text-white mb-3">
               <span className="block bg-gradient-to-b from-[#ffffff] via-[#f5f5f7] to-[#86868b] bg-clip-text text-transparent">
                 Security Advisories.
               </span>
-              <span className="block text-[#f5f5f7]">
-                Original Research &amp; Fixes.
-              </span>
             </h1>
 
-            <p className="text-[#86868b] text-base sm:text-lg font-normal max-w-3xl leading-relaxed">
-              Vulnerability disclosures, verified GitHub Security Advisories, Apple open-source patches, and technical root-cause analyses authored by independent security researcher <strong>Madhan Alagarsamy</strong>.
+            <p className="text-[#86868b] text-base font-normal max-w-2xl leading-relaxed">
+              Original vulnerability discoveries, GitHub Security Advisories, and vendor patches.
             </p>
           </header>
 

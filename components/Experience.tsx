@@ -6,7 +6,7 @@ import { Calendar, MapPin } from "lucide-react";
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-28 sm:py-36 px-6 sm:px-10 md:px-14 lg:px-20 z-10 bg-black">
+    <section id="experience" className="relative py-24 sm:py-32 px-6 sm:px-10 md:px-14 lg:px-20 z-10 bg-black">
       <div className="max-w-5xl mx-auto">
         {/* Apple Section Header */}
         <motion.div
@@ -14,22 +14,20 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
-          className="mb-16 sm:mb-20 max-w-3xl"
+          className="mb-14 sm:mb-18 max-w-2xl"
         >
           <div className="text-[#2997ff] text-xs sm:text-sm font-semibold tracking-[-0.01em] mb-3">
-            Track Record &amp; Leadership
+            Career
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-[-0.03em] leading-tight text-[#f5f5f7] mb-6">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-[-0.03em] leading-tight text-[#f5f5f7] mb-3">
             Experience.
-            <br />
-            <span className="text-[#86868b]">Venture &amp; Vulnerability Research.</span>
           </h2>
           <p className="text-[#86868b] text-base sm:text-lg font-normal leading-relaxed">
-            History of software engineering leadership at Net Corporation and independent vulnerability research engagements.
+            Software engineering leadership at Net Corporation and independent security research.
           </p>
         </motion.div>
 
-        {/* Apple Experience Bento Stack */}
+        {/* Experience Stack */}
         <div className="space-y-6">
           {experienceData.map((item, index) => {
             const isFounder = item.category === "FOUNDER";
@@ -40,11 +38,11 @@ export default function Experience() {
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-[#161617] border border-white/[0.08] hover:border-white/[0.2] rounded-[28px] p-8 sm:p-10 transition-all duration-400"
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="bg-[#161617] border border-white/[0.08] hover:border-white/[0.18] rounded-[28px] p-8 sm:p-10 transition-all duration-300"
               >
                 {/* Meta Bar */}
-                <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-white/[0.06]">
+                <div className="flex flex-wrap items-center justify-between gap-4 mb-5 pb-4 border-b border-white/[0.06]">
                   <div className="flex items-center space-x-3">
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-semibold ${
@@ -75,12 +73,12 @@ export default function Experience() {
                 </div>
 
                 {/* Role Title */}
-                <h3 className="text-xl sm:text-2xl font-semibold text-[#f5f5f7] tracking-tight mb-6">
+                <h3 className="text-xl font-semibold text-[#f5f5f7] tracking-tight mb-5">
                   {item.role}
                 </h3>
 
-                {/* Responsibilities */}
-                <ul className="space-y-3">
+                {/* Short responsibilities */}
+                <ul className="space-y-2.5">
                   {item.responsibilities.map((resp, rIdx) => (
                     <li
                       key={rIdx}

@@ -16,7 +16,7 @@ const navItems = [
   { label: "Experience", href: "/#experience", hash: "#experience" },
   { label: "Education", href: "/#education", hash: "#education" },
   { label: "Contact", href: "/#contact", hash: "#contact" },
-  { label: "Advisory Blog", href: "/blog", isRoute: true },
+  { label: "Blog", href: "/blog", isRoute: true },
 ];
 
 export default function Navigation() {

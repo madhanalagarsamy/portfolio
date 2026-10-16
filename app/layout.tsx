@@ -116,7 +116,7 @@ export default function RootLayout({
       <head>
         <JsonLd data={[personSchema, websiteSchema]} />
       </head>
-      <body className="min-h-full flex flex-col bg-black text-white selection:bg-white selection:text-black">
+      <body className="min-h-full flex flex-col bg-black text-[#f5f5f7] selection:bg-[#0071e3] selection:text-white antialiased">
         {children}
       </body>
     </html>

@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <SmoothScroll>
       <JsonLd data={profilePageSchema} />
-      <div className="relative min-h-screen bg-black text-white selection:bg-white selection:text-black">
+      <div className="relative min-h-screen bg-black text-[#f5f5f7] selection:bg-[#0071e3] selection:text-white">
         {/* Single Persistent HTML5 Background Video System */}
         <CinematicVideo />
 

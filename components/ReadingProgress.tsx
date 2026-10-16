@@ -25,7 +25,7 @@ export default function ReadingProgress() {
   return (
     <div
       aria-hidden="true"
-      className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-300 z-50 transition-all duration-100 ease-out origin-left pointer-events-none"
+      className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#0071e3] via-[#2997ff] to-[#70baff] z-50 transition-all duration-100 ease-out origin-left pointer-events-none"
       style={{
         transform: `scaleX(${completion / 100})`,
       }}

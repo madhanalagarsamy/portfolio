@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { profileData } from "@/data/profile";
-import { Copy, Check, ArrowUpRight } from "lucide-react";
+import { Copy, Check, Mail, ChevronRight, ShieldCheck } from "lucide-react";
+import GithubIcon from "@/components/icons/GithubIcon";
 
 export default function Contact() {
   const [copied, setCopied] = useState<string | null>(null);
@@ -17,53 +18,55 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 sm:py-32 px-6 sm:px-10 md:px-14 lg:px-20 z-10 border-t border-white/10 bg-black">
+    <section id="contact" className="relative py-28 sm:py-36 px-6 sm:px-10 md:px-14 lg:px-20 z-10 bg-black">
       <div className="max-w-5xl mx-auto">
-        {/* Section Header */}
+        {/* Apple Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
-          className="mb-14 sm:mb-18"
+          transition={{ duration: 0.6 }}
+          className="mb-16 sm:mb-20 max-w-3xl"
         >
-          <div className="flex items-center space-x-3 mb-3">
-            <span className="w-1.5 h-1.5 bg-emerald-400" />
-            <span className="text-xs font-mono text-neutral-400 tracking-widest uppercase">
-              08 // DIRECT COMMUNICATIONS
-            </span>
+          <div className="text-[#2997ff] text-xs sm:text-sm font-semibold tracking-[-0.01em] mb-3">
+            Direct Communications
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
-            INQUIRIES &amp; <br className="hidden sm:inline" />
-            SECURITY CORRESPONDENCE
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-[-0.03em] leading-tight text-[#f5f5f7] mb-6">
+            Contact.
+            <br />
+            <span className="text-[#86868b]">Security Correspondence &amp; Inquiries.</span>
           </h2>
 
-          <p className="text-neutral-400 font-light text-sm sm:text-base max-w-2xl leading-relaxed">
+          <p className="text-[#86868b] text-base sm:text-lg font-normal leading-relaxed">
             Available for vulnerability research engagements, systems architecture, and technical consulting. Coordinated vulnerability reports and inquiries are monitored directly.
           </p>
         </motion.div>
 
-        {/* Contact Dossier Grid */}
+        {/* Apple Contact Bento Grid */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
         >
-          {/* Email Channel */}
-          <div className="border border-white/10 bg-neutral-950 p-6 sm:p-8 flex flex-col justify-between group hover:border-white/30 transition-colors">
+          {/* Card 1: Direct Email */}
+          <div className="bg-[#161617] border border-white/[0.08] hover:border-white/[0.2] rounded-[28px] p-8 sm:p-10 flex flex-col justify-between transition-all duration-400 group">
             <div>
-              <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/10 text-xs font-mono">
-                <span className="text-emerald-400 font-bold">CHANNEL // 01</span>
-                <span className="text-neutral-500 uppercase tracking-wider">DIRECT EMAIL</span>
+              <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/[0.06] text-xs">
+                <span className="text-[#2997ff] font-semibold">CHANNEL 01</span>
+                <span className="text-[#86868b] uppercase tracking-wider">DIRECT EMAIL</span>
+              </div>
+
+              <div className="w-12 h-12 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-6">
+                <Mail size={22} className="text-[#2997ff]" />
               </div>
 
               <div className="flex items-center justify-between gap-4 mb-4">
                 <a
                   href={`mailto:${profileData.email}`}
-                  className="text-base sm:text-lg font-mono font-bold text-white hover:text-emerald-400 transition-colors break-all"
+                  className="text-lg sm:text-xl font-semibold text-white hover:text-[#2997ff] transition-colors break-all"
                 >
                   {profileData.email}
                 </a>
@@ -71,99 +74,94 @@ export default function Contact() {
                 <button
                   type="button"
                   onClick={() => copyToClipboard(profileData.email, "email")}
-                  className="px-2.5 py-1 text-[11px] font-mono text-neutral-400 hover:text-white border border-white/10 hover:border-white/30 bg-white/[0.02] transition-colors shrink-0 flex items-center space-x-1"
+                  className="px-3 py-1.5 text-xs text-[#86868b] hover:text-white rounded-full bg-[#1d1d1f] border border-white/10 hover:border-white/20 transition-all shrink-0 flex items-center space-x-1.5"
                   aria-label="Copy Email to Clipboard"
                 >
                   {copied === "email" ? (
                     <>
-                      <Check size={12} className="text-emerald-400" />
-                      <span className="text-emerald-400">COPIED</span>
+                      <Check size={13} className="text-[#30d158]" />
+                      <span className="text-[#30d158] font-medium">Copied</span>
                     </>
                   ) : (
                     <>
-                      <Copy size={12} />
-                      <span>COPY</span>
+                      <Copy size={13} />
+                      <span>Copy</span>
                     </>
                   )}
                 </button>
               </div>
 
-              <p className="text-xs text-neutral-400 font-light leading-relaxed mb-6">
+              <p className="text-sm text-[#86868b] font-normal leading-relaxed mb-6">
                 Preferred for coordinated vulnerability disclosure notices, technical consulting, and architecture inquiries.
               </p>
             </div>
 
-            <a
-              href={`mailto:${profileData.email}`}
-              className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-neutral-300 group-hover:text-emerald-400 transition-colors"
-            >
-              <span>COMPOSE TRANSMISSION</span>
-              <ArrowUpRight size={13} />
-            </a>
+            <div className="pt-6 border-t border-white/[0.06]">
+              <a
+                href={`mailto:${profileData.email}`}
+                className="inline-flex items-center space-x-1.5 bg-[#0071e3] hover:bg-[#0077ed] text-white text-sm font-normal px-5 py-2.5 rounded-full transition-all duration-200 active:scale-98"
+              >
+                <span>Compose Email</span>
+                <ChevronRight size={15} />
+              </a>
+            </div>
           </div>
 
-          {/* GitHub Channel */}
-          <div className="border border-white/10 bg-neutral-950 p-6 sm:p-8 flex flex-col justify-between group hover:border-white/30 transition-colors">
+          {/* Card 2: GitHub & Source Auditing */}
+          <div className="bg-[#161617] border border-white/[0.08] hover:border-white/[0.2] rounded-[28px] p-8 sm:p-10 flex flex-col justify-between transition-all duration-400 group">
             <div>
-              <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/10 text-xs font-mono">
-                <span className="text-emerald-400 font-bold">CHANNEL // 02</span>
-                <span className="text-neutral-500 uppercase tracking-wider">VERSION CONTROL</span>
+              <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/[0.06] text-xs">
+                <span className="text-[#30d158] font-semibold">CHANNEL 02</span>
+                <span className="text-[#86868b] uppercase tracking-wider">OPEN SOURCE</span>
               </div>
 
-              <div className="flex items-center justify-between gap-4 mb-4">
+              <div className="w-12 h-12 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-6">
+                <GithubIcon size={22} className="text-white" />
+              </div>
+
+              <div className="mb-4">
                 <a
                   href={profileData.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-base sm:text-lg font-mono font-bold text-white hover:text-emerald-400 transition-colors"
+                  className="text-lg sm:text-xl font-semibold text-white hover:text-[#2997ff] transition-colors"
                 >
                   github.com/{profileData.githubUsername}
                 </a>
-
-                <a
-                  href={profileData.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-2.5 py-1 text-[11px] font-mono text-neutral-400 hover:text-white border border-white/10 hover:border-white/30 bg-white/[0.02] transition-colors shrink-0 flex items-center space-x-1"
-                  aria-label="Open GitHub Profile"
-                >
-                  <ArrowUpRight size={12} />
-                  <span>VISIT</span>
-                </a>
               </div>
 
-              <p className="text-xs text-neutral-400 font-light leading-relaxed mb-6">
-                Public research repositories, proof-of-concept scripts, and open-source software contributions.
+              <p className="text-sm text-[#86868b] font-normal leading-relaxed mb-6">
+                Inspect public vulnerability research disclosures, upstream pull requests, and systems software repositories.
               </p>
             </div>
 
-            <a
-              href={profileData.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-neutral-300 group-hover:text-emerald-400 transition-colors"
-            >
-              <span>EXPLORE REPOSITORIES</span>
-              <ArrowUpRight size={13} />
-            </a>
+            <div className="pt-6 border-t border-white/[0.06]">
+              <a
+                href={profileData.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-1.5 bg-white/[0.08] hover:bg-white/[0.14] text-[#f5f5f7] border border-white/10 text-sm font-normal px-5 py-2.5 rounded-full transition-all duration-200 active:scale-98"
+              >
+                <span>Visit GitHub Profile</span>
+                <ChevronRight size={15} />
+              </a>
+            </div>
           </div>
         </motion.div>
 
-        {/* Operating Environment Ledger */}
-        <div className="border border-white/10 bg-neutral-950 p-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono text-neutral-400">
-          <div>
-            <span className="text-neutral-600 block text-[10px] mb-1">STATION</span>
-            <span className="text-neutral-200">Hosur, Tamil Nadu · India</span>
-          </div>
-          <div>
-            <span className="text-neutral-600 block text-[10px] mb-1">TIMEZONE</span>
-            <span className="text-neutral-200">IST (UTC+05:30)</span>
-          </div>
-          <div>
-            <span className="text-neutral-600 block text-[10px] mb-1">RESPONSE EXPECTATION</span>
-            <span className="text-emerald-400">&lt; 24h for security disclosures</span>
-          </div>
-        </div>
+        {/* Apple Security Advisory Notice */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="bg-[#161617] border border-white/[0.08] rounded-[20px] p-6 flex items-start space-x-3 text-xs text-[#86868b]"
+        >
+          <ShieldCheck size={18} className="text-[#30d158] shrink-0 mt-0.5" />
+          <p className="leading-relaxed">
+            <strong className="text-[#f5f5f7] font-medium">Coordinated Disclosure Notice:</strong> All security research inquiries and vulnerability advisories adhere strictly to Coordinated Vulnerability Disclosure (CVD) timelines. Encrypted communication channels can be arranged upon initial contact.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

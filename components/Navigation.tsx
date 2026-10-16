@@ -2,19 +2,21 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronRight, ShieldCheck } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { profileData } from "@/data/profile";
 
 const navItems = [
-  { label: "ADVISORIES", href: "/#advisory", hash: "#advisory" },
-  { label: "RESEARCH", href: "/#research", hash: "#research" },
-  { label: "SYSTEMS", href: "/#projects", hash: "#projects" },
-  { label: "CAPABILITIES", href: "/#skills", hash: "#skills" },
-  { label: "TRACK RECORD", href: "/#experience", hash: "#experience" },
-  { label: "CONTACT", href: "/#contact", hash: "#contact" },
-  { label: "WRITELOG", href: "/blog", isRoute: true },
+  { label: "Overview", href: "/#about", hash: "#about" },
+  { label: "Advisories", href: "/#advisory", hash: "#advisory" },
+  { label: "Research", href: "/#research", hash: "#research" },
+  { label: "Projects", href: "/#projects", hash: "#projects" },
+  { label: "Capabilities", href: "/#skills", hash: "#skills" },
+  { label: "Experience", href: "/#experience", hash: "#experience" },
+  { label: "Education", href: "/#education", hash: "#education" },
+  { label: "Contact", href: "/#contact", hash: "#contact" },
+  { label: "Advisory Blog", href: "/blog", isRoute: true },
 ];
 
 export default function Navigation() {
@@ -24,21 +26,19 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile drawer on Escape key
+  // Prevent background scroll when mobile menu is open
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMobileMenuOpen(false);
-    };
     if (mobileMenuOpen) {
-      window.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
     }
-    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [mobileMenuOpen]);
 
   const handleNavClick = (
@@ -74,26 +74,31 @@ export default function Navigation() {
 
   return (
     <>
+      {/* Apple Global Nav Bar */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-black/85 backdrop-blur-md border-b border-white/10 py-3.5"
-            : "bg-gradient-to-b from-black/80 to-transparent py-5"
+          scrolled || mobileMenuOpen
+            ? "bg-[#000000]/80 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+            : "bg-[#000000]/60 backdrop-blur-md border-b border-white/[0.05]"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-          {/* Identity Monogram */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 h-12 flex items-center justify-between">
+          {/* Brand Mark (Apple Symbol & Name) */}
           <Link
             href="/"
             onClick={handleLogoClick}
-            className="group flex items-center space-x-2.5 text-white font-mono text-xs sm:text-sm tracking-widest uppercase hover:text-neutral-300 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white"
+            className="group flex items-center space-x-2 text-[#f5f5f7] hover:text-white transition-opacity select-none"
           >
-            <span className="w-1.5 h-1.5 bg-emerald-400 group-hover:scale-125 transition-transform duration-200" />
-            <span className="font-bold tracking-tight">{profileData.name}</span>
+            <span className="text-base sm:text-lg leading-none transition-transform group-hover:scale-105" aria-hidden="true">
+              
+            </span>
+            <span className="text-[13px] font-semibold tracking-[-0.01em] text-[#f5f5f7]">
+              {profileData.name}
+            </span>
           </Link>
 
-          {/* Desktop Curated Nav */}
-          <nav aria-label="Main Navigation" className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+          {/* Desktop Nav Items (Apple Style) */}
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-7">
             {navItems.map((item) => {
               const active = item.isRoute && isBlogActive;
               return (
@@ -101,12 +106,12 @@ export default function Navigation() {
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item)}
-                  className={`text-[11px] font-mono tracking-widest transition-colors py-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white ${
+                  className={`text-[12px] tracking-[-0.01em] transition-all duration-200 ${
                     active
-                      ? "text-emerald-400 font-bold border-b border-emerald-400"
+                      ? "text-white font-medium underline underline-offset-8 decoration-[#0071e3] decoration-2"
                       : item.isRoute
-                      ? "text-emerald-300/90 hover:text-emerald-300 border border-emerald-500/30 px-2 py-0.5"
-                      : "text-neutral-400 hover:text-white"
+                      ? "text-[#2997ff] hover:text-[#70baff] font-normal"
+                      : "text-[#f5f5f7]/80 hover:text-white font-normal"
                   }`}
                 >
                   {item.label}
@@ -115,61 +120,82 @@ export default function Navigation() {
             })}
           </nav>
 
+          {/* Action CTA Button on Right */}
+          <div className="hidden lg:flex items-center space-x-3">
+            <Link
+              href="/#advisory"
+              className="inline-flex items-center space-x-1.5 bg-[#0071e3] hover:bg-[#0077ed] active:scale-95 text-white text-[12px] font-normal px-3.5 py-1 rounded-full transition-all duration-200"
+            >
+              <ShieldCheck size={13} />
+              <span>Advisories</span>
+            </Link>
+          </div>
+
           {/* Mobile Menu Trigger */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden text-neutral-300 hover:text-white p-2 border border-white/10 hover:border-white/20 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white"
-            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-            aria-expanded={mobileMenuOpen}
+            className="lg:hidden text-[#f5f5f7]/80 hover:text-white p-1.5 focus:outline-none transition-colors"
+            aria-label="Toggle Navigation Menu"
           >
-            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Apple Mobile Dropdown Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl lg:hidden flex flex-col justify-start px-8 pt-24 pb-12 overflow-y-auto"
-            role="dialog"
-            aria-label="Mobile Navigation"
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="fixed inset-0 top-12 z-40 bg-black/95 backdrop-blur-2xl lg:hidden flex flex-col justify-between px-6 py-8 overflow-y-auto"
           >
-            <div className="text-[11px] font-mono text-neutral-500 tracking-widest uppercase mb-4 pb-2 border-b border-white/10">
-              NAVIGATION INDEX
-            </div>
-            <nav className="flex flex-col space-y-4">
-              {navItems.map((item, idx) => {
+            <div className="space-y-4">
+              <div className="text-[11px] font-semibold text-[#86868b] uppercase tracking-wider mb-2">
+                Navigation
+              </div>
+
+              {navItems.map((item, index) => {
                 const active = item.isRoute && isBlogActive;
                 return (
                   <motion.div
                     key={item.label}
-                    initial={{ opacity: 0, x: -10 }}
+                    initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.03 }}
+                    transition={{ delay: index * 0.03, duration: 0.3 }}
                   >
                     <Link
                       href={item.href}
                       onClick={(e) => handleNavClick(e, item)}
-                      className={`text-sm font-mono tracking-widest block py-2 transition-colors border-b border-white/5 ${
+                      className={`flex items-center justify-between py-2 text-xl tracking-tight transition-colors ${
                         active
-                          ? "text-emerald-400 font-bold"
-                          : item.isRoute
-                          ? "text-emerald-300"
-                          : "text-neutral-300 hover:text-white"
+                          ? "text-[#2997ff] font-medium"
+                          : "text-[#f5f5f7] hover:text-[#2997ff]"
                       }`}
                     >
-                      {item.label}
+                      <span>{item.label}</span>
+                      <ChevronRight size={16} className="text-[#86868b]" />
                     </Link>
                   </motion.div>
                 );
               })}
-            </nav>
+            </div>
+
+            <div className="pt-8 border-t border-white/[0.08] space-y-3">
+              <Link
+                href="/#advisory"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-3 bg-[#0071e3] text-white text-center text-sm font-normal rounded-full block transition-transform active:scale-98"
+              >
+                Review Security Advisories
+              </Link>
+              <div className="text-center text-xs text-[#86868b] pt-2">
+                {profileData.location} · Net Corporation
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

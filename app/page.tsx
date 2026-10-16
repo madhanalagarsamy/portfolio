@@ -3,12 +3,8 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Experience from "@/components/Experience";
 import SecurityResearch from "@/components/SecurityResearch";
 import SecurityAdvisory from "@/components/SecurityAdvisory";
-import Skills from "@/components/Skills";
-import FeaturedProject from "@/components/FeaturedProject";
-import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
@@ -18,7 +14,7 @@ export default function Home() {
   const profilePageSchema = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
-    name: "Madhan Alagarsamy Portfolio",
+    name: "Madhan Alagarsamy — Security Research & Advisories",
     url: SITE_URL,
     mainEntity: {
       "@type": "Person",
@@ -26,7 +22,7 @@ export default function Home() {
       alternateName: ["MADHAN A", "Madhan A", "madhanalagarsamy"],
       description: SEO_CONFIG.description,
       url: SITE_URL,
-      jobTitle: "Independent Cybersecurity Researcher & Software Developer",
+      jobTitle: "Independent Cybersecurity Researcher",
       sameAs: [
         "https://github.com/madhanalagarsamy",
         "https://github.com/esp-rs/espflash/pull/1074",
@@ -45,7 +41,7 @@ export default function Home() {
         {/* Single Persistent HTML5 Background Video System */}
         <CinematicVideo />
 
-        {/* Persistent Transparent Content Journey */}
+        {/* Persistent Content Journey: 100% Security Researcher & Disclosures */}
         <div className="relative z-10">
           <Navigation />
           <main className="space-y-0">
@@ -53,10 +49,6 @@ export default function Home() {
             <About />
             <SecurityAdvisory />
             <SecurityResearch />
-            <FeaturedProject />
-            <Skills />
-            <Experience />
-            <Education />
             <Contact />
           </main>
           <Footer />

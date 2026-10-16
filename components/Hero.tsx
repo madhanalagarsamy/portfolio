@@ -43,7 +43,7 @@ export default function Hero() {
         {/* Eyebrow */}
         <motion.div variants={itemVariants} className="flex items-center space-x-2 mb-4">
           <span className="text-[#2997ff] text-xs sm:text-sm font-semibold">
-            Vulnerability Research &amp; Systems
+            Vulnerability Research &amp; Coordinated Disclosures
           </span>
           <span className="text-[#86868b]">·</span>
           <span className="text-[#86868b] text-xs sm:text-sm">
@@ -64,7 +64,7 @@ export default function Hero() {
           </span>
         </motion.h1>
 
-        {/* Direct Subhead (Concise, no AI fluff) */}
+        {/* Direct Subhead */}
         <motion.p
           variants={itemVariants}
           className="text-lg sm:text-xl md:text-2xl text-[#86868b] max-w-2xl mb-8 leading-relaxed font-normal tracking-[-0.015em] select-text"
@@ -106,7 +106,7 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* 4 Clean Highlight Bento Tiles */}
+      {/* 4 Clean Highlight Bento Tiles: 100% Security Research */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -153,16 +153,19 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Tile 4 */}
+        {/* Tile 4: BigBlueButton IDOR */}
         <div className="bg-[#161617]/70 border border-white/[0.08] hover:border-white/[0.18] rounded-[20px] p-5 backdrop-blur-md transition-all duration-300">
           <div className="text-[11px] font-semibold text-[#bf5af2] uppercase tracking-wider mb-1">
-            Systems Protocol
+            Application Security
           </div>
-          <div className="text-[15px] font-semibold text-[#f5f5f7]">
-            Optical Transfer (WASM)
-          </div>
+          <Link
+            href="/blog/ghsa-9v52-vhvw-4w5c"
+            className="text-[15px] font-semibold text-[#f5f5f7] hover:text-[#bf5af2] transition-colors block"
+          >
+            BigBlueButton IDOR
+          </Link>
           <p className="text-xs text-[#86868b] mt-1">
-            1 GB screen-to-camera optical transmission.
+            Presentation upload authorization bypass.
           </p>
         </div>
       </motion.div>

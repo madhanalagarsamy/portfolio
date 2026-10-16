@@ -7,9 +7,9 @@ export default function Footer() {
   return (
     <footer className="relative z-10 bg-[#000000] text-[#86868b] border-t border-white/[0.08] pt-12 pb-16 px-6 sm:px-10 md:px-14 lg:px-20 text-[12px] font-normal leading-normal">
       <div className="max-w-6xl mx-auto">
-        {/* Apple 5-Column Directory Grid */}
+        {/* Apple 5-Column Directory Grid: 100% Security Research Focus */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
-          {/* Column 1 */}
+          {/* Column 1: Advisories */}
           <div>
             <h4 className="text-[#f5f5f7] font-semibold text-[12px] mb-3">
               Advisories
@@ -43,54 +43,54 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 2 */}
+          {/* Column 2: Research Areas */}
           <div>
             <h4 className="text-[#f5f5f7] font-semibold text-[12px] mb-3">
-              Engineering
+              Research Areas
             </h4>
             <ul className="space-y-2 text-[#86868b]">
               <li>
-                <a href="#projects" className="hover:text-[#f5f5f7] transition-colors">
-                  Optical Protocol
+                <a href="#research" className="hover:text-[#f5f5f7] transition-colors">
+                  Swift-NIO Sockets
                 </a>
               </li>
               <li>
-                <a href="#skills" className="hover:text-[#f5f5f7] transition-colors">
-                  WASM &amp; SIMD
+                <a href="#research" className="hover:text-[#f5f5f7] transition-colors">
+                  CI/CD Self-Hosted Runners
                 </a>
               </li>
               <li>
-                <a href="#skills" className="hover:text-[#f5f5f7] transition-colors">
-                  Swift-NIO Runtimes
+                <a href="#research" className="hover:text-[#f5f5f7] transition-colors">
+                  Supply Chain Hardening
                 </a>
               </li>
               <li>
-                <a href="#skills" className="hover:text-[#f5f5f7] transition-colors">
-                  Distributed Backends
+                <a href="#research" className="hover:text-[#f5f5f7] transition-colors">
+                  Web Access &amp; IDOR
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Column 3 */}
+          {/* Column 3: Standards */}
           <div>
             <h4 className="text-[#f5f5f7] font-semibold text-[12px] mb-3">
-              Organization
+              Standards
             </h4>
             <ul className="space-y-2 text-[#86868b]">
               <li>
-                <a href="#experience" className="hover:text-[#f5f5f7] transition-colors">
-                  Net Corporation
+                <a href="#advisory" className="hover:text-[#f5f5f7] transition-colors">
+                  RFC 9116 Policy
+                </a>
+              </li>
+              <li>
+                <a href="#advisory" className="hover:text-[#f5f5f7] transition-colors">
+                  ISO/IEC 29147 CVD
                 </a>
               </li>
               <li>
                 <a href="#about" className="hover:text-[#f5f5f7] transition-colors">
-                  Founder
-                </a>
-              </li>
-              <li>
-                <a href="#education" className="hover:text-[#f5f5f7] transition-colors">
-                  Education
+                  Deterministic PoCs
                 </a>
               </li>
               <li>
@@ -99,7 +99,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4 */}
+          {/* Column 4: Documentation */}
           <div>
             <h4 className="text-[#f5f5f7] font-semibold text-[12px] mb-3">
               Documentation
@@ -123,10 +123,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 5 */}
+          {/* Column 5: Connect */}
           <div>
             <h4 className="text-[#f5f5f7] font-semibold text-[12px] mb-3">
-              Connect
+              Correspondence
             </h4>
             <ul className="space-y-2 text-[#86868b]">
               <li>
@@ -137,6 +137,11 @@ export default function Footer() {
               <li>
                 <a href={profileData.github} target="_blank" rel="noopener noreferrer" className="hover:text-[#f5f5f7] transition-colors">
                   GitHub Profile
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-[#f5f5f7] transition-colors">
+                  Direct Channel
                 </a>
               </li>
             </ul>

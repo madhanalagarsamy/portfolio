@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { profileData } from "@/data/profile";
-import { Shield, GitCommit, Cpu, Layers, Award } from "lucide-react";
+import { Shield, GitCommit, Layers, Award, ShieldCheck } from "lucide-react";
 
 export default function About() {
   const bentoDirectives = [
@@ -34,13 +34,13 @@ export default function About() {
         "Auditing self-hosted runners, composite actions, and token scopes to prevent supply-chain compromise.",
     },
     {
-      title: "Protocol Engineering",
-      category: "Systems",
-      icon: Cpu,
+      title: "Coordinated Disclosure",
+      category: "Standards",
+      icon: ShieldCheck,
       accent: "text-[#bf5af2]",
       borderAccent: "hover:border-[#bf5af2]/40",
       description:
-        "High-throughput WebAssembly optical data transmission and distributed architectures at Net Corporation.",
+        "Strict adherence to RFC 9116 and ISO/IEC 29147 guidelines, ensuring vulnerabilities are remediated safely.",
     },
   ];
 
@@ -104,7 +104,7 @@ export default function About() {
           })}
         </div>
 
-        {/* Specs Strip */}
+        {/* Specs Strip: 100% Security Research Focus */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -123,19 +123,19 @@ export default function About() {
 
           <div>
             <span className="text-[11px] font-semibold text-[#86868b] uppercase tracking-wider block mb-1">
-              Organization
+              Discipline
             </span>
             <span className="text-sm sm:text-[15px] font-medium text-[#f5f5f7]">
-              Net Corporation (Founder)
+              Vulnerability Research
             </span>
           </div>
 
           <div>
             <span className="text-[11px] font-semibold text-[#86868b] uppercase tracking-wider block mb-1">
-              Education
+              Targets
             </span>
             <span className="text-sm sm:text-[15px] font-medium text-[#f5f5f7]">
-              MCA · Periyar University
+              Darwin · Linux · CI/CD
             </span>
           </div>
 
@@ -145,7 +145,7 @@ export default function About() {
             </span>
             <span className="text-sm sm:text-[15px] font-medium text-[#30d158] flex items-center space-x-1.5">
               <Award size={14} />
-              <span>RFC 9116 / CVD Standard</span>
+              <span>RFC 9116 / CVD</span>
             </span>
           </div>
         </motion.div>

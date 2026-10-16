@@ -10,13 +10,9 @@ import { profileData } from "@/data/profile";
 const navItems = [
   { label: "Overview", href: "/#about", hash: "#about" },
   { label: "Advisories", href: "/#advisory", hash: "#advisory" },
-  { label: "Research", href: "/#research", hash: "#research" },
-  { label: "Projects", href: "/#projects", hash: "#projects" },
-  { label: "Capabilities", href: "/#skills", hash: "#skills" },
-  { label: "Experience", href: "/#experience", hash: "#experience" },
-  { label: "Education", href: "/#education", hash: "#education" },
+  { label: "Research Areas", href: "/#research", hash: "#research" },
   { label: "Contact", href: "/#contact", hash: "#contact" },
-  { label: "Blog", href: "/blog", isRoute: true },
+  { label: "Advisory Blog", href: "/blog", isRoute: true },
 ];
 
 export default function Navigation() {
@@ -97,8 +93,8 @@ export default function Navigation() {
             </span>
           </Link>
 
-          {/* Desktop Nav Items (Apple Style) */}
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-7">
+          {/* Desktop Nav Items */}
+          <nav className="hidden lg:flex items-center space-x-7 xl:space-x-8">
             {navItems.map((item) => {
               const active = item.isRoute && isBlogActive;
               return (
@@ -165,7 +161,7 @@ export default function Navigation() {
                     key={item.label}
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.03, duration: 0.3 }}
+                    transition={{ delay: index * 0.04, duration: 0.3 }}
                   >
                     <Link
                       href={item.href}
@@ -193,7 +189,7 @@ export default function Navigation() {
                 Review Security Advisories
               </Link>
               <div className="text-center text-xs text-[#86868b] pt-2">
-                {profileData.location} · Net Corporation
+                {profileData.location} · Vulnerability Research
               </div>
             </div>
           </motion.div>
